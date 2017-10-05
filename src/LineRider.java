@@ -13,19 +13,8 @@ public class LineRider extends Application {
     Path path;
 
     public static void main(String args[]) {
-        Ticker ticker = new Ticker(20); // 20 ticks per second
 
-        ticker.addTickListener(new TickListener() {
-                                   @Override
-                                   public void onTick(float deltaTime) {
-                                       System.out.println(String.format("Ticked with deltaTime %f", deltaTime));
-                                   }
-                               }
-        );
         launch(args);
-        while (true) {
-            ticker.update();
-        }
 
     }
 
@@ -55,7 +44,6 @@ public class LineRider extends Application {
         @Override
         public void handle(MouseEvent mouseEvent) {
             if (mouseEvent.getEventType() == MouseEvent.MOUSE_PRESSED) {
-                path.getElements().clear();
                 path.getElements()
                         .add(new MoveTo(mouseEvent.getX(), mouseEvent.getY()));
             } else if (mouseEvent.getEventType() == MouseEvent.MOUSE_DRAGGED) {
