@@ -73,7 +73,7 @@ public class LineRider extends Application {
             double velX = .5;
             double velY = 0;
             double accelY = .15;
-            double frictionY = .965;
+            double frictionY = .965;//.965;
             double frictionX = .999;
             final double RADIUS = ball.getRadius();
 
@@ -89,29 +89,49 @@ public class LineRider extends Application {
                 final boolean atLeftBorder = ball.getLayoutX() <= RADIUS;
                 final boolean atBottomBorder = ball.getLayoutY() >= (bounds.getMaxY() - RADIUS);
                 final boolean atTopBorder = ball.getLayoutY() <= RADIUS;
-
+                final double padding = 1.00;
                 if (atRightBorder) {
-                    ball.setLayoutX(bounds.getMaxX() - (RADIUS * 1.1));
+                    ball.setLayoutX(bounds.getMaxX() - (RADIUS * padding));
                     velX *= frictionX;
                     velX *= -1;
                 }
                 if (atLeftBorder) {
-                    ball.setLayoutX(RADIUS * 1.1);
+                    ball.setLayoutX(RADIUS * padding);
                     velX *= frictionX;
                     velX *= -1;
                 }
                 if (atBottomBorder) {
                     velY *= -1;
                     velY *= frictionY;
-                    ball.setLayoutY(bounds.getMaxY() - (RADIUS * 1.1));
+                    ball.setLayoutY(bounds.getMaxY() - (RADIUS * padding));
                 }
                 if (atTopBorder) {
                     velY *= -1;
                     velY *= frictionY;
-                    ball.setLayoutY(RADIUS * 1.1);
+                    ball.setLayoutY(RADIUS * padding);
                 }
 
-                checkCollisions(ball, lines);
+                Line collide = checkCollisions(ball, lines);
+                if (collide != null) {
+                    double lineMidX = (collide.getStartX() + collide.getEndX()) / 2;
+                    double lineMidY = (collide.getStartY() + collide.getEndY()) / 2;
+                    double ballMidX = ball.getLayoutX();
+                    double ballMidY = ball.getLayoutY();
+                    double ratioX = (ballMidX - lineMidX) / Math.min(Math.abs(ballMidX - lineMidX), Math.abs(ballMidY - lineMidY));
+                    double ratioY = (ballMidY - lineMidY) / Math.min(Math.abs(ballMidX - lineMidX), Math.abs(ballMidY - lineMidY));
+                    double distX = ballMidX - lineMidX;
+                    double distY = ballMidY - lineMidY;
+
+                    double increment = 0.01;
+                    ball.setFill(Color.YELLOW);
+                    while (Shape.intersect(collide, ball).getBoundsInLocal().getWidth() != -1 || Shape.intersect(collide, ball).getBoundsInLocal().getHeight() != -1) {
+                        ball.setLayoutX(ball.getLayoutX() + (ratioX * increment));
+                        ball.setLayoutY(ball.getLayoutY() + (ratioY * increment));
+                    }
+                    ball.setFill(Color.BLUE);
+                    velX *= distX == 0 ?  distX / -20;
+                    velY *= distY / -20;
+                }
             }
         }));
 
@@ -119,32 +139,16 @@ public class LineRider extends Application {
         loop.play();
     }
 
-    public void checkCollisions(Circle ball, ArrayList<Line> lines) {
+    public Line checkCollisions(Circle ball, ArrayList<Line> lines) {
         ball.setFill(Color.BLUE);
         for (Line line : lines) {
             Shape intersect = Shape.intersect(line, ball);
             if (intersect.getBoundsInLocal().getWidth() != -1 || intersect.getBoundsInLocal().getHeight() != -1) {
-                Line newLine = new Line(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
-                newLine.setStroke(Color.GREEN);
-                newLine.setStrokeWidth(5);
-                root.getChildren().add(newLine);
-
-                double lineMidX = (line.getStartX() + line.getEndX()) / 2;
-                double lineMidY = (line.getStartY() + line.getEndY()) / 2;
-                double ballMidX = ball.getLayoutX();
-                double ballMidY = ball.getLayoutY();
-
                 ball.setFill(Color.RED);
-                /*
-                while (ball.getBoundsInParent().intersects(line.getBoundsInParent())) {
-                    System.out.println("Distance: " + Math.sqrt(Math.pow(ballMidX - lineMidX, 2) + Math.pow(ballMidY - lineMidY, 2)));
-                    ball.setLayoutX(ball.getLayoutX() + ((ballMidX - lineMidX) * 0.001));
-                    ball.setLayoutY(ball.getLayoutY() + ((ballMidY - lineMidY) * 0.001));
-                }
-                */
+                return line;
             }
         }
-
+        return null;
     }
 
     public static void main(String[] args) {
