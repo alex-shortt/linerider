@@ -121,16 +121,20 @@ public class LineRider extends Application {
                     double ratioY = (ballMidY - lineMidY) / Math.min(Math.abs(ballMidX - lineMidX), Math.abs(ballMidY - lineMidY));
                     double distX = ballMidX - lineMidX;
                     double distY = ballMidY - lineMidY;
+                    double lineSlope = (collide.getStartY() - collide.getEndY()) / (collide.getStartX() - collide.getEndX());
+                    double velSlope = velY / velX;
+                    double resultAngle = Math.atan((velSlope - lineSlope) / (1 + velSlope * lineSlope));
 
-                    double increment = 0.01;
+                    double increment = 0.5;
                     ball.setFill(Color.YELLOW);
                     while (Shape.intersect(collide, ball).getBoundsInLocal().getWidth() != -1 || Shape.intersect(collide, ball).getBoundsInLocal().getHeight() != -1) {
                         ball.setLayoutX(ball.getLayoutX() + (ratioX * increment));
                         ball.setLayoutY(ball.getLayoutY() + (ratioY * increment));
                     }
                     ball.setFill(Color.BLUE);
-                    velX *= distX == 0 ?  distX / -20;
-                    velY *= distY / -20;
+
+                    velX *= Math.cos(resultAngle) * 1.1 * frictionX;
+                    velY *= -Math.sin(resultAngle) * 1.1 * frictionY;
                 }
             }
         }));
