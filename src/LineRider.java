@@ -15,12 +15,12 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.util.concurrent.TimeUnit;
+
 import java.util.ArrayList;
 
 public class LineRider extends Application {
 
-    private final int LINE_LENGTH = 100;
+    private final int LINE_LENGTH = 16;
     private static Circle ball = new Circle(15, Color.BLUE);
     private final int HEIGHT = 800;
     private final int WIDTH = 800;
@@ -70,17 +70,16 @@ public class LineRider extends Application {
 
 
         final Timeline loop = new Timeline(new KeyFrame(Duration.millis(10), new EventHandler<ActionEvent>() {
-            double velX = 1;
-            double velY = .1;
-            double accelY = .01;
+            double velX = .5;
+            double velY = 0;
+            double accelY = .15;
             double frictionY = .965;//.965;
             double frictionX = .999;
             final double RADIUS = ball.getRadius();
 
             //@Override
             public void handle(final ActionEvent t) {
-                ball.setLayoutX(ball.getLayoutX() );
-                //System.out.println("when does this happen?");
+                ball.setLayoutX(ball.getLayoutX() + velX);
                 ball.setLayoutY(ball.getLayoutY() + velY);
 
                 velY += accelY;
@@ -102,13 +101,13 @@ public class LineRider extends Application {
                     velX *= -1;
                 }
                 if (atBottomBorder) {
-                    //velY *= -1;
-                    //velY *= frictionY;
+                    velY *= -1;
+                    velY *= frictionY;
                     ball.setLayoutY(bounds.getMaxY() - (RADIUS * padding));
                 }
                 if (atTopBorder) {
                     velY *= -1;
-                    //velY *= frictionY;
+                    velY *= frictionY;
                     ball.setLayoutY(RADIUS * padding);
                 }
 
@@ -126,32 +125,16 @@ public class LineRider extends Application {
                     double velSlope = velY / velX;
                     double resultAngle = Math.atan((velSlope - lineSlope) / (1 + velSlope * lineSlope));
 
-                    double increment =  .8;
+                    double increment = 0.5;
                     ball.setFill(Color.YELLOW);
-                    //graphicsContext.strokeLine(lineMidX, lineMidY, ballMidX, ballMidY);
                     while (Shape.intersect(collide, ball).getBoundsInLocal().getWidth() != -1 || Shape.intersect(collide, ball).getBoundsInLocal().getHeight() != -1) {
-
-                        if (velY > 0) {
-                            if (lineSlope > 0) {
-                                ball.setLayoutX(ball.getLayoutX() + (lineSlope + .0001) + .2);
-                                ball.setLayoutY(ball.getLayoutY() + (-lineSlope + .0001) + .2);
-                            }
-                            else {
-                                ball.setLayoutX(ball.getLayoutX() + (lineSlope * .05 + .0001) - .2);
-                                //System.out.println("moving LEFT DOWN to: " + (ball.getLayoutX() + (lineSlope + .0001) - .2));
-                                ball.setLayoutY(ball.getLayoutY() + (-lineSlope * .05 + .0001) - .2);
-                            }
-                        }
-                        else {
-                            velY*=0;
-                            ball.setLayoutY(ball.getLayoutY() + 10);
-                            //System.out.println(velY);
-                        }
+                        ball.setLayoutX(ball.getLayoutX() + (ratioX * increment));
+                        ball.setLayoutY(ball.getLayoutY() + (ratioY * increment));
                     }
                     ball.setFill(Color.BLUE);
 
-                    //velX *= Math.cos(resultAngle) * frictionX;
-                    //velY *= -Math.sin(resultAngle)  * frictionY;
+                    velX *= Math.cos(resultAngle) * 1.1 * frictionX;
+                    velY *= -Math.sin(resultAngle) * 1.1 * frictionY;
                 }
             }
         }));
@@ -166,11 +149,7 @@ public class LineRider extends Application {
             Shape intersect = Shape.intersect(line, ball);
             if (intersect.getBoundsInLocal().getWidth() != -1 || intersect.getBoundsInLocal().getHeight() != -1) {
                 ball.setFill(Color.RED);
-                //System.out.println("dink");
                 return line;
-            }
-            else {
-                //System.out.println("donk");
             }
         }
         return null;
