@@ -3,11 +3,12 @@ import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ToolBar;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -20,142 +21,220 @@ import java.util.ArrayList;
 
 public class LineRider extends Application {
 
-    private final int LINE_LENGTH = 16;
-    private static Circle ball = new Circle(15, Color.BLUE);
+    private final int LINE_LENGTH = 30;
+
     private final int HEIGHT = 800;
     private final int WIDTH = 800;
+    private boolean physicsRunning = false;
     private static Group root;
 
-
-    public void start(Stage primaryStage) {
+    public void start(Stage stage) {
         root = new Group();
         Scene scene = new Scene(root, WIDTH, HEIGHT);
-        Canvas canvas = new Canvas(WIDTH, HEIGHT);
-        final GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+        PhysicsBody body = new PhysicsBody(root, new Circle(15, Color.BLUE), .9, .9, 0.5, 0, 0, -0.15);
+        ArrayList<CollisionBody> bodies = new ArrayList<>();
 
-        ball.relocate(100, 100);
-        root.getChildren().addAll(ball);
-        root.getChildren().add(canvas);
-
-
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("LineRider Prototype v0.1");
-        primaryStage.show();
-
-        ArrayList<Line> lines = new ArrayList<>();
+        //Drawing lines
         double[] startCoords = new double[2];
-
-        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+        stage.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
             startCoords[0] = event.getX();
             startCoords[1] = event.getY();
-            //sets the starting position of the line, just to get it off the ground
         });
-
-        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
+        stage.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
             if (Math.hypot(startCoords[0] - event.getX(), startCoords[1] - event.getY()) > LINE_LENGTH) {
-                graphicsContext.strokeLine(startCoords[0], startCoords[1], event.getX(), event.getY());
-                lines.add(new Line(startCoords[0], startCoords[1], event.getX(), event.getY()));
+                CollisionBody newLine = new CollisionBody(root, new Line(startCoords[0], startCoords[1], event.getX(), event.getY()));
+                bodies.add(newLine);
 
                 startCoords[0] = event.getX();
                 startCoords[1] = event.getY();
-
-                //just prints out how big the arraylist is so i know this works
-                System.out.println(lines.size());
             }
         });
 
-        canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, event -> {
-            //empty, but you can do shit here if you want to have something upon mouse release
+        //Stop and Start
+        stage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+            switch (event.getCode().toString()) {
+                case "SPACE":
+                    physicsRunning = !physicsRunning;
+                    if (!physicsRunning) {
+                        body.reset(50, 50);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            System.out.println(event.getCode());
         });
 
-
-        final Timeline loop = new Timeline(new KeyFrame(Duration.millis(10), new EventHandler<ActionEvent>() {
-            double velX = .5;
-            double velY = 0;
-            double accelY = .15;
-            double frictionY = .965;//.965;
-            double frictionX = .999;
-            final double RADIUS = ball.getRadius();
-
-            //@Override
-            public void handle(final ActionEvent t) {
-                ball.setLayoutX(ball.getLayoutX() + velX);
-                ball.setLayoutY(ball.getLayoutY() + velY);
-
-                velY += accelY;
-
-                final Bounds bounds = canvas.getBoundsInLocal();
-                final boolean atRightBorder = ball.getLayoutX() >= (bounds.getMaxX() - RADIUS);
-                final boolean atLeftBorder = ball.getLayoutX() <= RADIUS;
-                final boolean atBottomBorder = ball.getLayoutY() >= (bounds.getMaxY() - RADIUS);
-                final boolean atTopBorder = ball.getLayoutY() <= RADIUS;
-                final double padding = 1.00;
-                if (atRightBorder) {
-                    ball.setLayoutX(bounds.getMaxX() - (RADIUS * padding));
-                    velX *= frictionX;
-                    velX *= -1;
-                }
-                if (atLeftBorder) {
-                    ball.setLayoutX(RADIUS * padding);
-                    velX *= frictionX;
-                    velX *= -1;
-                }
-                if (atBottomBorder) {
-                    velY *= -1;
-                    velY *= frictionY;
-                    ball.setLayoutY(bounds.getMaxY() - (RADIUS * padding));
-                }
-                if (atTopBorder) {
-                    velY *= -1;
-                    velY *= frictionY;
-                    ball.setLayoutY(RADIUS * padding);
-                }
-
-                Line collide = checkCollisions(ball, lines);
-                if (collide != null) {
-                    double lineMidX = (collide.getStartX() + collide.getEndX()) / 2;
-                    double lineMidY = (collide.getStartY() + collide.getEndY()) / 2;
-                    double ballMidX = ball.getLayoutX();
-                    double ballMidY = ball.getLayoutY();
-                    double ratioX = (ballMidX - lineMidX) / Math.min(Math.abs(ballMidX - lineMidX), Math.abs(ballMidY - lineMidY));
-                    double ratioY = (ballMidY - lineMidY) / Math.min(Math.abs(ballMidX - lineMidX), Math.abs(ballMidY - lineMidY));
-                    double distX = ballMidX - lineMidX;
-                    double distY = ballMidY - lineMidY;
-                    double lineSlope = (collide.getStartY() - collide.getEndY()) / (collide.getStartX() - collide.getEndX());
-                    double velSlope = velY / velX;
-                    double resultAngle = Math.atan((velSlope - lineSlope) / (1 + velSlope * lineSlope));
-
-                    double increment = 0.5;
-                    ball.setFill(Color.YELLOW);
-                    while (Shape.intersect(collide, ball).getBoundsInLocal().getWidth() != -1 || Shape.intersect(collide, ball).getBoundsInLocal().getHeight() != -1) {
-                        ball.setLayoutX(ball.getLayoutX() + (ratioX * increment));
-                        ball.setLayoutY(ball.getLayoutY() + (ratioY * increment));
-                    }
-                    ball.setFill(Color.BLUE);
-
-                    velX *= Math.cos(resultAngle) * 1.1 * frictionX;
-                    velY *= -Math.sin(resultAngle) * 1.1 * frictionY;
-                }
+        //Physics Loop
+        final Timeline loop = new Timeline(new KeyFrame(Duration.millis(10), t -> {
+            if (physicsRunning) {
+                body.updatePhysics();
+                body.checkWorldCollisions(new BoundingBox(0, 0, scene.getWidth(), scene.getHeight()));
+                body.checkBodyCollisions(bodies);
             }
         }));
-
         loop.setCycleCount(Timeline.INDEFINITE);
         loop.play();
-    }
 
-    public Line checkCollisions(Circle ball, ArrayList<Line> lines) {
-        ball.setFill(Color.BLUE);
-        for (Line line : lines) {
-            Shape intersect = Shape.intersect(line, ball);
-            if (intersect.getBoundsInLocal().getWidth() != -1 || intersect.getBoundsInLocal().getHeight() != -1) {
-                ball.setFill(Color.RED);
-                return line;
-            }
-        }
-        return null;
+        //begin
+        stage.setScene(scene);
+        stage.setTitle("LineRider v1.0");
+        stage.show();
     }
 
     public static void main(String[] args) {
         launch(args);
+    }
+}
+
+abstract class Body {
+    private Shape shape;
+    protected Group root;
+
+    public Body(Group passRoot, Shape newShape) {
+        shape = newShape;
+        root = passRoot;
+        root.getChildren().addAll(shape);
+    }
+
+    public boolean collidesWith(Body body) {
+        Shape intersect = Shape.intersect(this.getShape(), body.getShape());
+        return (intersect.getBoundsInLocal().getWidth() != -1 || intersect.getBoundsInLocal().getHeight() != -1);
+    }
+
+    public Shape getShape() {
+        return shape;
+    }
+
+    protected double getAngleFromXY(double x, double y) {
+        double slope = y / x;
+        double angle = Math.toDegrees(Math.atan((slope)));
+        if ((y > 0 && x < 0) || (y < 0 && x < 0)) {
+            angle += 180;
+        }
+        return normalizeAngle(angle);
+    }
+
+    protected double normalizeAngle(double angle) {
+        while (angle < 0) {
+            angle += 360;
+        }
+        while (angle > 360) {
+            angle -= 360;
+        }
+        return angle;
+    }
+}
+
+class CollisionBody extends Body {
+    Line line;
+
+    public CollisionBody(Group root, Shape shape) {
+        super(root, shape);
+        line = (Line) shape;
+    }
+}
+
+class PhysicsBody extends Body {
+    double velX;
+    double velY;
+    double frictionX;
+    double frictionY;
+    double accelX;
+    double accelY;
+    final double RADIUS;
+    Circle ball;
+
+    public PhysicsBody(Group root, Shape shape, double fricX, double fricY, double velocityX, double velocityY, double accelerationX, double accelerationY) {
+        super(root, shape);
+        shape.relocate(50, 50);
+        ball = ((Circle) shape);
+        RADIUS = ball.getRadius();
+        frictionX = fricX;
+        frictionY = fricY;
+        velX = velocityX;
+        velY = velocityY;
+        accelX = accelerationX;
+        accelY = accelerationY;
+    }
+
+    public void checkWorldCollisions(Bounds bounds) {
+        final boolean atRightBorder = getShape().getLayoutX() >= (bounds.getMaxX() - RADIUS);
+        final boolean atLeftBorder = getShape().getLayoutX() <= RADIUS;
+        final boolean atBottomBorder = getShape().getLayoutY() >= (bounds.getMaxY() - RADIUS);
+        final boolean atTopBorder = getShape().getLayoutY() <= RADIUS;
+        final double padding = 1.00;
+
+        if (atRightBorder) {
+            getShape().setLayoutX(bounds.getMaxX() - (RADIUS * padding));
+            velX *= frictionX;
+            velX *= -1;
+        }
+        if (atLeftBorder) {
+            getShape().setLayoutX(RADIUS * padding);
+            velX *= frictionX;
+            velX *= -1;
+        }
+        if (atBottomBorder) {
+            velY *= -1;
+            velY *= frictionY;
+            getShape().setLayoutY(bounds.getMaxY() - (RADIUS * padding));
+        }
+        if (atTopBorder) {
+            velY *= -1;
+            velY *= frictionY;
+            getShape().setLayoutY(RADIUS * padding);
+        }
+    }
+
+    public void checkBodyCollisions(ArrayList<CollisionBody> bodies) {
+        for (CollisionBody body : bodies) {
+            if (this.collidesWith(body)) {
+                Line line = (Line) body.getShape();
+
+                double lineMidX = (line.getStartX() + line.getEndX()) / 2;
+                double lineMidY = (line.getStartY() + line.getEndY()) / 2;
+                double ballMidX = ball.getLayoutX();
+                double ballMidY = ball.getLayoutY();
+                double ratioX = (ballMidX - lineMidX) / Math.min(Math.abs(ballMidX - lineMidX), Math.abs(ballMidY - lineMidY));
+                double ratioY = (ballMidY - lineMidY) / Math.min(Math.abs(ballMidX - lineMidX), Math.abs(ballMidY - lineMidY));
+
+                double increment = 0.05;
+                ball.setFill(Color.YELLOW);
+                while (collidesWith(body)) {
+                    System.out.print("|");
+                    ball.setLayoutX(ball.getLayoutX() + (ratioX * increment));
+                    ball.setLayoutY(ball.getLayoutY() + (ratioY * increment));
+                }
+                ball.setFill(Color.BLUE);
+                System.out.println("");
+
+                double lineAngle = getAngleFromXY(line.getEndX() - line.getStartX(), line.getStartY() - line.getEndY());
+                double velAngle = getAngleFromXY(velX, velY);
+                double totalVel = Math.hypot(velX, velY);
+
+                velAngle -= lineAngle;
+                velAngle = normalizeAngle(velAngle);
+                velAngle = 360 - velAngle;
+                velAngle += lineAngle;
+
+                velX = totalVel * Math.cos(Math.toRadians(velAngle)); //* frictionX;
+                velY = totalVel * Math.sin(Math.toRadians(velAngle)) * frictionY;
+            }
+        }
+    }
+
+    public void updatePhysics() {
+        ball.setLayoutX(ball.getLayoutX() + velX);
+        ball.setLayoutY(ball.getLayoutY() - velY);
+
+        velY += accelY;
+        velX += accelX;
+    }
+
+    public void reset(int x, int y) {
+        ball.relocate(x, y);
+        velX = 0;
+        velY = 0;
     }
 }
