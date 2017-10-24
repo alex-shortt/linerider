@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="866a3a91-02df-4a8b-aa59-406c0e965786" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/TickListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Ticker.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LineRider.java" afterPath="$PROJECT_DIR$/src/LineRider.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -22,15 +20,14 @@
       <file leaf-file-name="LineRider.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LineRider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state relative-caret-position="-705">
+              <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
               <folding>
-                <element signature="e#1269#1375#0" expanded="false" />
-                <element signature="e#1434#1841#0" expanded="false" />
-                <element signature="e#1922#2327#0" expanded="false" />
-                <element signature="e#2431#2686#0" expanded="false" />
-                <element signature="e#2922#2923#0" expanded="true" />
-                <element signature="e#2950#2951#0" expanded="true" />
+                <element signature="e#1890#1996#0" expanded="false" />
+                <element signature="e#2055#2462#0" expanded="false" />
+                <element signature="e#2554#2959#0" expanded="false" />
+                <element signature="e#3554#3555#0" expanded="true" />
+                <element signature="e#3582#3583#0" expanded="true" />
                 <element signature="class#Body#0" expanded="false" />
                 <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
                 <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
@@ -38,19 +35,10 @@
                 <element signature="class#CollisionBody#0" expanded="false" />
                 <element signature="class#PhysicsBody#0" expanded="false" />
                 <element signature="method#checkWorldCollisions#0;class#PhysicsBody#0" expanded="false" />
+                <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
                 <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
                 <element signature="method#reset#0;class#PhysicsBody#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Line Rider.iml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Line Rider.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -123,6 +111,12 @@
               <item name="linerider" type="b2602c69:ProjectViewProjectNode" />
               <item name="linerider" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="linerider" type="b2602c69:ProjectViewProjectNode" />
+              <item name="linerider" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="linerider" type="b2602c69:ProjectViewProjectNode" />
@@ -315,12 +309,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1269#1375#0" expanded="false" />
-            <element signature="e#1434#1841#0" expanded="false" />
-            <element signature="e#1922#2327#0" expanded="false" />
-            <element signature="e#2431#2686#0" expanded="false" />
-            <element signature="e#2922#2923#0" expanded="true" />
-            <element signature="e#2950#2951#0" expanded="true" />
+            <element signature="e#1890#1996#0" expanded="false" />
+            <element signature="e#2055#2462#0" expanded="false" />
+            <element signature="e#2554#2959#0" expanded="false" />
+            <element signature="e#3554#3555#0" expanded="true" />
+            <element signature="e#3582#3583#0" expanded="true" />
             <element signature="class#Body#0" expanded="false" />
             <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
             <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
@@ -328,6 +321,7 @@
             <element signature="class#CollisionBody#0" expanded="false" />
             <element signature="class#PhysicsBody#0" expanded="false" />
             <element signature="method#checkWorldCollisions#0;class#PhysicsBody#0" expanded="false" />
+            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
             <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
             <element signature="method#reset#0;class#PhysicsBody#0" expanded="false" />
           </folding>
@@ -355,12 +349,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1269#1375#0" expanded="false" />
-            <element signature="e#1434#1841#0" expanded="false" />
-            <element signature="e#1922#2327#0" expanded="false" />
-            <element signature="e#2431#2686#0" expanded="false" />
-            <element signature="e#2922#2923#0" expanded="true" />
-            <element signature="e#2950#2951#0" expanded="true" />
+            <element signature="e#1890#1996#0" expanded="false" />
+            <element signature="e#2055#2462#0" expanded="false" />
+            <element signature="e#2554#2959#0" expanded="false" />
+            <element signature="e#3554#3555#0" expanded="true" />
+            <element signature="e#3582#3583#0" expanded="true" />
             <element signature="class#Body#0" expanded="false" />
             <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
             <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
@@ -368,6 +361,7 @@
             <element signature="class#CollisionBody#0" expanded="false" />
             <element signature="class#PhysicsBody#0" expanded="false" />
             <element signature="method#checkWorldCollisions#0;class#PhysicsBody#0" expanded="false" />
+            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
             <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
             <element signature="method#reset#0;class#PhysicsBody#0" expanded="false" />
           </folding>
@@ -395,12 +389,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1269#1375#0" expanded="false" />
-            <element signature="e#1434#1841#0" expanded="false" />
-            <element signature="e#1922#2327#0" expanded="false" />
-            <element signature="e#2431#2686#0" expanded="false" />
-            <element signature="e#2922#2923#0" expanded="true" />
-            <element signature="e#2950#2951#0" expanded="true" />
+            <element signature="e#1890#1996#0" expanded="false" />
+            <element signature="e#2055#2462#0" expanded="false" />
+            <element signature="e#2554#2959#0" expanded="false" />
+            <element signature="e#3554#3555#0" expanded="true" />
+            <element signature="e#3582#3583#0" expanded="true" />
             <element signature="class#Body#0" expanded="false" />
             <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
             <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
@@ -408,6 +401,7 @@
             <element signature="class#CollisionBody#0" expanded="false" />
             <element signature="class#PhysicsBody#0" expanded="false" />
             <element signature="method#checkWorldCollisions#0;class#PhysicsBody#0" expanded="false" />
+            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
             <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
             <element signature="method#reset#0;class#PhysicsBody#0" expanded="false" />
           </folding>
@@ -435,12 +429,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1269#1375#0" expanded="false" />
-            <element signature="e#1434#1841#0" expanded="false" />
-            <element signature="e#1922#2327#0" expanded="false" />
-            <element signature="e#2431#2686#0" expanded="false" />
-            <element signature="e#2922#2923#0" expanded="true" />
-            <element signature="e#2950#2951#0" expanded="true" />
+            <element signature="e#1890#1996#0" expanded="false" />
+            <element signature="e#2055#2462#0" expanded="false" />
+            <element signature="e#2554#2959#0" expanded="false" />
+            <element signature="e#3554#3555#0" expanded="true" />
+            <element signature="e#3582#3583#0" expanded="true" />
             <element signature="class#Body#0" expanded="false" />
             <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
             <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
@@ -448,6 +441,7 @@
             <element signature="class#CollisionBody#0" expanded="false" />
             <element signature="class#PhysicsBody#0" expanded="false" />
             <element signature="method#checkWorldCollisions#0;class#PhysicsBody#0" expanded="false" />
+            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
             <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
             <element signature="method#reset#0;class#PhysicsBody#0" expanded="false" />
           </folding>
@@ -458,14 +452,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Line Rider.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -483,17 +469,29 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/geometry/Bounds.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/scene/shape/Line.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/scene/shape/Shape.java" />
+    <entry file="file://$PROJECT_DIR$/Line Rider.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/pencil.PNG">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/LineRider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="-705">
+          <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
           <folding>
-            <element signature="e#1269#1375#0" expanded="false" />
-            <element signature="e#1434#1841#0" expanded="false" />
-            <element signature="e#1922#2327#0" expanded="false" />
-            <element signature="e#2431#2686#0" expanded="false" />
-            <element signature="e#2922#2923#0" expanded="true" />
-            <element signature="e#2950#2951#0" expanded="true" />
+            <element signature="e#1890#1996#0" expanded="false" />
+            <element signature="e#2055#2462#0" expanded="false" />
+            <element signature="e#2554#2959#0" expanded="false" />
+            <element signature="e#3554#3555#0" expanded="true" />
+            <element signature="e#3582#3583#0" expanded="true" />
             <element signature="class#Body#0" expanded="false" />
             <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
             <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
@@ -501,6 +499,7 @@
             <element signature="class#CollisionBody#0" expanded="false" />
             <element signature="class#PhysicsBody#0" expanded="false" />
             <element signature="method#checkWorldCollisions#0;class#PhysicsBody#0" expanded="false" />
+            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
             <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
             <element signature="method#reset#0;class#PhysicsBody#0" expanded="false" />
           </folding>

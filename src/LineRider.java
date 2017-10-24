@@ -7,7 +7,11 @@ import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
+import javafx.scene.control.Separator;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -22,17 +26,31 @@ import java.util.ArrayList;
 public class LineRider extends Application {
 
     private final int LINE_LENGTH = 30;
-
-    private final int HEIGHT = 800;
-    private final int WIDTH = 800;
     private boolean physicsRunning = false;
+    private static Canvas canvas;
     private static Group root;
+
+    //TODO: Add Eraser - toolbar
+    //TODO: Add Clear Button - toolbar
+    //TODO: Panning (hand tool) - toolbar
+    //TODO: ball placer tool (place ball where you click) - toolbar
+    //TODO: clear balls tool - toolbar
+    //TODO: Add Face Texture
+    //TODO: Add rotation physics
 
     public void start(Stage stage) {
         root = new Group();
-        Scene scene = new Scene(root, WIDTH, HEIGHT);
-        PhysicsBody body = new PhysicsBody(root, new Circle(15, Color.BLUE), .9, .9, 0.5, 0, 0, -0.15);
+        Scene scene = new Scene(root, 800, 800);
+        canvas = new Canvas(800,800);
+        canvas.getGraphicsContext2D().drawImage(new Image("/assets/eraser.PNG"), 100, 30, 50, 50);
+        root.getChildren().addAll(canvas);
+
+        PhysicsBody body = new PhysicsBody(root, new Circle(15, Color.BLUE), .999, .9, 0, -0.15);
         ArrayList<CollisionBody> bodies = new ArrayList<>();
+
+
+        //toolbar
+        //root.getChildren().addAll(bar);
 
         //Drawing lines
         double[] startCoords = new double[2];
@@ -50,7 +68,7 @@ public class LineRider extends Application {
             }
         });
 
-        //Stop and Start
+        //Stop and Start keypresses
         stage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             switch (event.getCode().toString()) {
                 case "SPACE":
@@ -78,7 +96,7 @@ public class LineRider extends Application {
 
         //begin
         stage.setScene(scene);
-        stage.setTitle("LineRider v1.0");
+        stage.setTitle("LineRider v1.1");
         stage.show();
     }
 
@@ -136,8 +154,8 @@ class CollisionBody extends Body {
 }
 
 class PhysicsBody extends Body {
-    double velX;
-    double velY;
+    double velX = 0;
+    double velY = 0;
     double frictionX;
     double frictionY;
     double accelX;
@@ -145,15 +163,13 @@ class PhysicsBody extends Body {
     final double RADIUS;
     Circle ball;
 
-    public PhysicsBody(Group root, Shape shape, double fricX, double fricY, double velocityX, double velocityY, double accelerationX, double accelerationY) {
+    public PhysicsBody(Group root, Shape shape, double fricX, double fricY, double accelerationX, double accelerationY) {
         super(root, shape);
         shape.relocate(50, 50);
         ball = ((Circle) shape);
         RADIUS = ball.getRadius();
         frictionX = fricX;
         frictionY = fricY;
-        velX = velocityX;
-        velY = velocityY;
         accelX = accelerationX;
         accelY = accelerationY;
     }
@@ -218,7 +234,7 @@ class PhysicsBody extends Body {
                 velAngle = 360 - velAngle;
                 velAngle += lineAngle;
 
-                velX = totalVel * Math.cos(Math.toRadians(velAngle)); //* frictionX;
+                velX = totalVel * Math.cos(Math.toRadians(velAngle)) * frictionX;
                 velY = totalVel * Math.sin(Math.toRadians(velAngle)) * frictionY;
             }
         }
@@ -236,5 +252,22 @@ class PhysicsBody extends Body {
         ball.relocate(x, y);
         velX = 0;
         velY = 0;
+    }
+}
+
+class ToolBarItem{
+    Image image;
+    int x;
+    int y;
+    double height;
+    double width;
+    Canvas canvas;
+
+    public ToolBarItem(String url, int posX, int posY, double setHeight){
+        image = new Image(url);
+        x = posX;
+        y = posY;
+        height = setHeight;
+        width = image.getWidth() * (image.getHeight() / height);
     }
 }
