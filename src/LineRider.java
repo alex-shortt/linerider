@@ -1,17 +1,12 @@
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
-import javafx.scene.control.Separator;
-import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -23,10 +18,12 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
-import java.util.function.Function;
+
+enum ToolItem{
+    PENCIL, ERASER
+}
 
 public class LineRider extends Application {
-
     private final int LINE_LENGTH = 30;
     private boolean physicsRunning = false;
     private static Canvas canvas;
@@ -51,17 +48,19 @@ public class LineRider extends Application {
 
         ArrayList<ToolBarItem> toolbar = new ArrayList<>();
         double spacing = 20;
-        ToolBarItem pencil = new ToolBarItem(canvas, "/assets/pencil.png", 150, 5, 30);
+        final double TOOL_HEIGHT = 30;
+        ToolBarItem pencil = new ToolBarItem(canvas, "/assets/pencil.png", 150, 5, TOOL_HEIGHT, ToolItem.PENCIL);
         toolbar.add(pencil);
-        ToolBarItem eraser = new ToolBarItem(canvas, "/assets/eraser.png", pencil.getEndX() + spacing, 5, 30);
+        ToolBarItem eraser = new ToolBarItem(canvas, "/assets/eraser.png", pencil.getEndX() + spacing, 5, TOOL_HEIGHT, ToolItem.ERASER);
         toolbar.add(eraser);
-        ToolBarItem pencil2 = new ToolBarItem(canvas, "/assets/pencil.png", eraser.getEndX() + spacing, 5, 30);
-        toolbar.add(pencil2);
 
         stage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             for(ToolBarItem tool : toolbar){
                 if(tool.getBounds().contains(new Point2D(event.getX(), event.getY()))){
-                    tool.setHilighted(true);
+                    //click event
+                    switch (tool.getItemType()){
+
+                    }
                 }
             }
         });
@@ -277,14 +276,16 @@ class ToolBarItem{
     double width;
     Canvas canvas;
     boolean isHilighted = false;
+    ToolItem itemType;
 
-    public ToolBarItem(Canvas newCanvas,  String url, double posX, double posY, double setHeight){
+    public ToolBarItem(Canvas newCanvas, String url, double posX, double posY, double setHeight, ToolItem type){
         image = new Image(url);
         x = posX;
         y = posY;
         height = setHeight;
         width = image.getWidth() * (height / image.getHeight());
         canvas = newCanvas;
+        itemType = type;
 
         canvas.getGraphicsContext2D().drawImage(image, x, y, width, height);
     }
@@ -298,8 +299,13 @@ class ToolBarItem{
         canvas.getGraphicsContext2D().drawImage(image, x, y, width, height);
     }
 
-    public void clickEvent(){
+    public ToolItem getItemType(){
+        return itemType;
+    }
 
+    public void toggleImage(String newUrl){
+        //create new image, hide current, set image, show again
+        //used for play/pause
     }
 
     public Bounds getBounds(){
