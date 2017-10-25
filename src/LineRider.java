@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -22,6 +23,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
+import java.util.function.Function;
 
 public class LineRider extends Application {
 
@@ -42,15 +44,27 @@ public class LineRider extends Application {
         root = new Group();
         Scene scene = new Scene(root, 800, 800);
         canvas = new Canvas(800,800);
-        canvas.getGraphicsContext2D().drawImage(new Image("/assets/eraser.PNG"), 100, 30, 50, 50);
         root.getChildren().addAll(canvas);
 
         PhysicsBody body = new PhysicsBody(root, new Circle(15, Color.BLUE), .999, .9, 0, -0.15);
         ArrayList<CollisionBody> bodies = new ArrayList<>();
 
+        ArrayList<ToolBarItem> toolbar = new ArrayList<>();
+        double spacing = 20;
+        ToolBarItem pencil = new ToolBarItem(canvas, "/assets/pencil.png", 150, 5, 30);
+        toolbar.add(pencil);
+        ToolBarItem eraser = new ToolBarItem(canvas, "/assets/eraser.png", pencil.getEndX() + spacing, 5, 30);
+        toolbar.add(eraser);
+        ToolBarItem pencil2 = new ToolBarItem(canvas, "/assets/pencil.png", eraser.getEndX() + spacing, 5, 30);
+        toolbar.add(pencil2);
 
-        //toolbar
-        //root.getChildren().addAll(bar);
+        stage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            for(ToolBarItem tool : toolbar){
+                if(tool.getBounds().contains(new Point2D(event.getX(), event.getY()))){
+                    tool.setHilighted(true);
+                }
+            }
+        });
 
         //Drawing lines
         double[] startCoords = new double[2];
@@ -257,17 +271,59 @@ class PhysicsBody extends Body {
 
 class ToolBarItem{
     Image image;
-    int x;
-    int y;
+    double x;
+    double y;
     double height;
     double width;
     Canvas canvas;
+    boolean isHilighted = false;
 
-    public ToolBarItem(String url, int posX, int posY, double setHeight){
+    public ToolBarItem(Canvas newCanvas,  String url, double posX, double posY, double setHeight){
         image = new Image(url);
         x = posX;
         y = posY;
         height = setHeight;
-        width = image.getWidth() * (image.getHeight() / height);
+        width = image.getWidth() * (height / image.getHeight());
+        canvas = newCanvas;
+
+        canvas.getGraphicsContext2D().drawImage(image, x, y, width, height);
+    }
+
+    public void hide(){
+        canvas.getGraphicsContext2D().clearRect(x, y, width, height);
+    }
+
+    public void show(){
+        hide();
+        canvas.getGraphicsContext2D().drawImage(image, x, y, width, height);
+    }
+
+    public void clickEvent(){
+
+    }
+
+    public Bounds getBounds(){
+        return new BoundingBox(x, y, width, height);
+    }
+
+    public double getEndX(){
+        return x + width;
+    }
+
+    public boolean isHilighted() {
+        return isHilighted;
+    }
+
+    public void setHilighted(boolean visible){
+        isHilighted = visible;
+        if(visible){
+            int topMargin = 10;
+            canvas.getGraphicsContext2D().strokeLine(x, y + height + topMargin, x + width, y + height + topMargin);
+        }
+        else{
+            int topMargin = 10;
+            int padding = 3;
+            canvas.getGraphicsContext2D().clearRect(x - padding, y + height + topMargin - padding, x + width + padding, y + height + topMargin + padding);
+        }
     }
 }
