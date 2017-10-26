@@ -5,6 +5,7 @@ import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
@@ -18,18 +19,19 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-enum ToolItem{
-    PENCIL, ERASER
+enum ToolItem {
+    PENCIL, ERASER, BALLPLACER
 }
 
 public class LineRider extends Application {
-    private final int LINE_LENGTH = 30;
+    private final int LINE_LENGTH = 24;
     private boolean physicsRunning = false;
     private static Canvas canvas;
     private static Group root;
+    private static ToolItem penType = ToolItem.PENCIL;
 
-    //TODO: Add Eraser - toolbar
     //TODO: Add Clear Button - toolbar
     //TODO: Panning (hand tool) - toolbar
     //TODO: ball placer tool (place ball where you click) - toolbar
@@ -40,7 +42,7 @@ public class LineRider extends Application {
     public void start(Stage stage) {
         root = new Group();
         Scene scene = new Scene(root, 800, 800);
-        canvas = new Canvas(800,800);
+        canvas = new Canvas(800, 800);
         root.getChildren().addAll(canvas);
 
         PhysicsBody body = new PhysicsBody(root, new Circle(15, Color.BLUE), .999, .9, 0, -0.15);
@@ -53,13 +55,44 @@ public class LineRider extends Application {
         toolbar.add(pencil);
         ToolBarItem eraser = new ToolBarItem(canvas, "/assets/eraser.png", pencil.getEndX() + spacing, 5, TOOL_HEIGHT, ToolItem.ERASER);
         toolbar.add(eraser);
+        ToolBarItem ballPlacer = new ToolBarItem(canvas, "/assets/ball.png", eraser.getEndX() + spacing, 5, TOOL_HEIGHT, ToolItem.BALLPLACER);
+        toolbar.add(ballPlacer);
+
+        pencil.setHilighted(true);
 
         stage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            for(ToolBarItem tool : toolbar){
-                if(tool.getBounds().contains(new Point2D(event.getX(), event.getY()))){
+            boolean clickedToolbar = false;
+            for (ToolBarItem tool : toolbar) {
+                if (tool.getBounds().contains(new Point2D(event.getX(), event.getY()))) {
                     //click event
-                    switch (tool.getItemType()){
-
+                    switch (tool.getItemType()) {
+                        case PENCIL:
+                            penType = ToolItem.PENCIL;
+                            break;
+                        case ERASER:
+                            penType = ToolItem.ERASER;
+                            break;
+                        case BALLPLACER:
+                            penType = ToolItem.BALLPLACER;
+                            break;
+                    }
+                    for (ToolBarItem tool2 : toolbar) {
+                        tool2.setHilighted(false);
+                    }
+                    tool.setHilighted(true);
+                    clickedToolbar = true;
+                }
+            }
+            if (!clickedToolbar && penType == ToolItem.BALLPLACER) {
+                System.out.println("place ball");
+            } else if (!clickedToolbar && penType == ToolItem.ERASER) {
+                Shape test = new Circle(event.getX(), event.getY(), 10);
+                for (int i = bodies.size() - 1; i >= 0; i--) {
+                    CollisionBody line = bodies.get(i);
+                    Shape intersect = Shape.intersect(line.getShape(), test);
+                    if (intersect.getBoundsInLocal().getWidth() != -1 || intersect.getBoundsInLocal().getHeight() != -1) {
+                        root.getChildren().remove(line.getLine());
+                        bodies.remove(line);
                     }
                 }
             }
@@ -72,12 +105,22 @@ public class LineRider extends Application {
             startCoords[1] = event.getY();
         });
         stage.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
-            if (Math.hypot(startCoords[0] - event.getX(), startCoords[1] - event.getY()) > LINE_LENGTH) {
+            if (penType == ToolItem.PENCIL && Math.hypot(startCoords[0] - event.getX(), startCoords[1] - event.getY()) > LINE_LENGTH) {
                 CollisionBody newLine = new CollisionBody(root, new Line(startCoords[0], startCoords[1], event.getX(), event.getY()));
                 bodies.add(newLine);
 
                 startCoords[0] = event.getX();
                 startCoords[1] = event.getY();
+            } else if (penType == ToolItem.ERASER) {
+                Shape test = new Circle(event.getX(), event.getY(), 10);
+                for (int i = bodies.size() - 1; i >= 0; i--) {
+                    CollisionBody line = bodies.get(i);
+                    Shape intersect = Shape.intersect(line.getShape(), test);
+                    if (intersect.getBoundsInLocal().getWidth() != -1 || intersect.getBoundsInLocal().getHeight() != -1) {
+                        root.getChildren().remove(line.getLine());
+                        bodies.remove(line);
+                    }
+                }
             }
         });
 
@@ -163,6 +206,14 @@ class CollisionBody extends Body {
     public CollisionBody(Group root, Shape shape) {
         super(root, shape);
         line = (Line) shape;
+    }
+
+    public Bounds getBounds() {
+        return new BoundingBox(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
+    }
+
+    public Line getLine() {
+        return line;
     }
 }
 
@@ -268,7 +319,7 @@ class PhysicsBody extends Body {
     }
 }
 
-class ToolBarItem{
+class ToolBarItem {
     Image image;
     double x;
     double y;
@@ -278,7 +329,7 @@ class ToolBarItem{
     boolean isHilighted = false;
     ToolItem itemType;
 
-    public ToolBarItem(Canvas newCanvas, String url, double posX, double posY, double setHeight, ToolItem type){
+    public ToolBarItem(Canvas newCanvas, String url, double posX, double posY, double setHeight, ToolItem type) {
         image = new Image(url);
         x = posX;
         y = posY;
@@ -290,29 +341,29 @@ class ToolBarItem{
         canvas.getGraphicsContext2D().drawImage(image, x, y, width, height);
     }
 
-    public void hide(){
+    public void hide() {
         canvas.getGraphicsContext2D().clearRect(x, y, width, height);
     }
 
-    public void show(){
+    public void show() {
         hide();
         canvas.getGraphicsContext2D().drawImage(image, x, y, width, height);
     }
 
-    public ToolItem getItemType(){
+    public ToolItem getItemType() {
         return itemType;
     }
 
-    public void toggleImage(String newUrl){
+    public void toggleImage(String newUrl) {
         //create new image, hide current, set image, show again
         //used for play/pause
     }
 
-    public Bounds getBounds(){
+    public Bounds getBounds() {
         return new BoundingBox(x, y, width, height);
     }
 
-    public double getEndX(){
+    public double getEndX() {
         return x + width;
     }
 
@@ -320,13 +371,12 @@ class ToolBarItem{
         return isHilighted;
     }
 
-    public void setHilighted(boolean visible){
+    public void setHilighted(boolean visible) {
         isHilighted = visible;
-        if(visible){
+        if (visible) {
             int topMargin = 10;
             canvas.getGraphicsContext2D().strokeLine(x, y + height + topMargin, x + width, y + height + topMargin);
-        }
-        else{
+        } else {
             int topMargin = 10;
             int padding = 3;
             canvas.getGraphicsContext2D().clearRect(x - padding, y + height + topMargin - padding, x + width + padding, y + height + topMargin + padding);
