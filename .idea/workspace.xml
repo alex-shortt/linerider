@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="866a3a91-02df-4a8b-aa59-406c0e965786" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LineRider.java" afterPath="$PROJECT_DIR$/src/LineRider.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,32 +20,46 @@
       <file leaf-file-name="LineRider.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LineRider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="180">
+              <caret line="233" column="69" lean-forward="false" selection-start-line="233" selection-start-column="69" selection-end-line="233" selection-end-column="69" />
               <folding>
-                <element signature="e#5407#5812#0" expanded="false" />
-                <element signature="e#5916#6171#0" expanded="false" />
-                <element signature="e#6407#6408#0" expanded="true" />
-                <element signature="e#6435#6436#0" expanded="true" />
-                <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-                <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-                <element signature="e#7791#7792#0" expanded="true" />
-                <element signature="e#7818#7819#0" expanded="true" />
-                <element signature="class#PhysicsBody#0" expanded="false" />
-                <element signature="method#checkWorldCollisions#0;class#PhysicsBody#0" expanded="false" />
-                <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-                <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-                <element signature="method#reset#0;class#PhysicsBody#0" expanded="false" />
-                <element signature="e#12143#12144#0" expanded="true" />
-                <element signature="method#show#0;class#ToolBarItem#0" expanded="false" />
-                <element signature="e#12381#12382#0" expanded="true" />
-                <element signature="e#12412#12413#0" expanded="true" />
-                <element signature="method#toggleImage#0;class#ToolBarItem#0" expanded="false" />
-                <element signature="e#12591#12592#0" expanded="true" />
-                <element signature="e#12650#12651#0" expanded="true" />
-                <element signature="e#12681#12682#0" expanded="true" />
-                <element signature="e#12713#12714#0" expanded="true" />
-                <element signature="method#setHilighted#0;class#ToolBarItem#0" expanded="false" />
+                <element signature="e#2932#3482#0" expanded="false" />
+                <element signature="e#6944#6945#0" expanded="true" />
+                <element signature="e#6972#6973#0" expanded="true" />
+                <element signature="class#Course#0" expanded="false" />
+                <element signature="e#7210#7211#0" expanded="true" />
+                <element signature="e#7251#7252#0" expanded="true" />
+                <element signature="e#7302#7303#0" expanded="true" />
+                <element signature="e#7340#7341#0" expanded="true" />
+                <element signature="e#8357#8358#0" expanded="true" />
+                <element signature="e#8396#8397#0" expanded="true" />
+                <element signature="e#8444#8445#0" expanded="true" />
+                <element signature="e#8480#8481#0" expanded="true" />
+                <element signature="class#Body#0" expanded="false" />
+                <element signature="class#CollisionBody#0" expanded="false" />
+                <element signature="e#10359#10360#0" expanded="true" />
+                <element signature="e#10386#10387#0" expanded="true" />
+                <element signature="class#ToolBarItem#0" expanded="false" />
+                <element signature="e#14723#14724#0" expanded="true" />
+                <element signature="e#14965#14966#0" expanded="true" />
+                <element signature="e#14994#14995#0" expanded="true" />
+                <element signature="e#15173#15174#0" expanded="true" />
+                <element signature="e#15232#15233#0" expanded="true" />
+                <element signature="e#15263#15264#0" expanded="true" />
+                <element signature="e#15295#15296#0" expanded="true" />
+                <marker date="1509053833454" expanded="false" signature="9502:9513" ph=" { " />
+                <marker date="1509053833454" expanded="false" signature="9526:9532" ph=" }" />
+                <marker date="1509053833454" expanded="false" signature="9590:9812" ph="{...}" />
+                <marker date="1509053833454" expanded="false" signature="9864:10023" ph="{...}" />
+                <marker date="1509053833454" expanded="false" signature="11018:12023" ph="{...}" />
+                <marker date="1509053833454" expanded="false" signature="12094:13791" ph="{...}" />
+                <marker date="1509053833454" expanded="false" signature="13825:13983" ph="{...}" />
+                <marker date="1509053833454" expanded="false" signature="14723:14733" ph=" { " />
+                <marker date="1509053833454" expanded="false" signature="14794:14800" ph=" }" />
+                <marker date="1509053833454" expanded="false" signature="15040:15141" ph="{}" />
+                <marker date="1509053833454" expanded="false" signature="15330:15341" ph=" { " />
+                <marker date="1509053833454" expanded="false" signature="15360:15366" ph=" }" />
+                <marker date="1509053833454" expanded="false" signature="15414:15866" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -66,6 +79,9 @@
       <find>scene</find>
       <find>root</find>
       <find>getChildren</find>
+      <find>getchildren</find>
+      <find>pentype</find>
+      <find>TRASH</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -283,25 +299,25 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24634147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24634147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991952" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14630578" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24878049" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24878049" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -319,29 +335,43 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#5407#5812#0" expanded="false" />
-            <element signature="e#5916#6171#0" expanded="false" />
-            <element signature="e#6407#6408#0" expanded="true" />
-            <element signature="e#6435#6436#0" expanded="true" />
-            <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-            <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-            <element signature="e#7791#7792#0" expanded="true" />
-            <element signature="e#7818#7819#0" expanded="true" />
-            <element signature="class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkWorldCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#reset#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="e#12143#12144#0" expanded="true" />
-            <element signature="method#show#0;class#ToolBarItem#0" expanded="false" />
-            <element signature="e#12381#12382#0" expanded="true" />
-            <element signature="e#12412#12413#0" expanded="true" />
-            <element signature="method#toggleImage#0;class#ToolBarItem#0" expanded="false" />
-            <element signature="e#12591#12592#0" expanded="true" />
-            <element signature="e#12650#12651#0" expanded="true" />
-            <element signature="e#12681#12682#0" expanded="true" />
-            <element signature="e#12713#12714#0" expanded="true" />
-            <element signature="method#setHilighted#0;class#ToolBarItem#0" expanded="false" />
+            <element signature="e#2932#3482#0" expanded="false" />
+            <element signature="e#6944#6945#0" expanded="true" />
+            <element signature="e#6972#6973#0" expanded="true" />
+            <element signature="class#Course#0" expanded="false" />
+            <element signature="e#7210#7211#0" expanded="true" />
+            <element signature="e#7251#7252#0" expanded="true" />
+            <element signature="e#7302#7303#0" expanded="true" />
+            <element signature="e#7340#7341#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8396#8397#0" expanded="true" />
+            <element signature="e#8444#8445#0" expanded="true" />
+            <element signature="e#8480#8481#0" expanded="true" />
+            <element signature="class#Body#0" expanded="false" />
+            <element signature="class#CollisionBody#0" expanded="false" />
+            <element signature="e#10359#10360#0" expanded="true" />
+            <element signature="e#10386#10387#0" expanded="true" />
+            <element signature="class#ToolBarItem#0" expanded="false" />
+            <element signature="e#14723#14724#0" expanded="true" />
+            <element signature="e#14965#14966#0" expanded="true" />
+            <element signature="e#14994#14995#0" expanded="true" />
+            <element signature="e#15173#15174#0" expanded="true" />
+            <element signature="e#15232#15233#0" expanded="true" />
+            <element signature="e#15263#15264#0" expanded="true" />
+            <element signature="e#15295#15296#0" expanded="true" />
+            <marker date="1509053833454" expanded="false" signature="9502:9513" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="9526:9532" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="9590:9812" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="9864:10023" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="11018:12023" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="12094:13791" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="13825:13983" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="14723:14733" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="14794:14800" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="15040:15141" ph="{}" />
+            <marker date="1509053833454" expanded="false" signature="15330:15341" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="15360:15366" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="15414:15866" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -367,29 +397,43 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#5407#5812#0" expanded="false" />
-            <element signature="e#5916#6171#0" expanded="false" />
-            <element signature="e#6407#6408#0" expanded="true" />
-            <element signature="e#6435#6436#0" expanded="true" />
-            <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-            <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-            <element signature="e#7791#7792#0" expanded="true" />
-            <element signature="e#7818#7819#0" expanded="true" />
-            <element signature="class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkWorldCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#reset#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="e#12143#12144#0" expanded="true" />
-            <element signature="method#show#0;class#ToolBarItem#0" expanded="false" />
-            <element signature="e#12381#12382#0" expanded="true" />
-            <element signature="e#12412#12413#0" expanded="true" />
-            <element signature="method#toggleImage#0;class#ToolBarItem#0" expanded="false" />
-            <element signature="e#12591#12592#0" expanded="true" />
-            <element signature="e#12650#12651#0" expanded="true" />
-            <element signature="e#12681#12682#0" expanded="true" />
-            <element signature="e#12713#12714#0" expanded="true" />
-            <element signature="method#setHilighted#0;class#ToolBarItem#0" expanded="false" />
+            <element signature="e#2932#3482#0" expanded="false" />
+            <element signature="e#6944#6945#0" expanded="true" />
+            <element signature="e#6972#6973#0" expanded="true" />
+            <element signature="class#Course#0" expanded="false" />
+            <element signature="e#7210#7211#0" expanded="true" />
+            <element signature="e#7251#7252#0" expanded="true" />
+            <element signature="e#7302#7303#0" expanded="true" />
+            <element signature="e#7340#7341#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8396#8397#0" expanded="true" />
+            <element signature="e#8444#8445#0" expanded="true" />
+            <element signature="e#8480#8481#0" expanded="true" />
+            <element signature="class#Body#0" expanded="false" />
+            <element signature="class#CollisionBody#0" expanded="false" />
+            <element signature="e#10359#10360#0" expanded="true" />
+            <element signature="e#10386#10387#0" expanded="true" />
+            <element signature="class#ToolBarItem#0" expanded="false" />
+            <element signature="e#14723#14724#0" expanded="true" />
+            <element signature="e#14965#14966#0" expanded="true" />
+            <element signature="e#14994#14995#0" expanded="true" />
+            <element signature="e#15173#15174#0" expanded="true" />
+            <element signature="e#15232#15233#0" expanded="true" />
+            <element signature="e#15263#15264#0" expanded="true" />
+            <element signature="e#15295#15296#0" expanded="true" />
+            <marker date="1509053833454" expanded="false" signature="9502:9513" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="9526:9532" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="9590:9812" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="9864:10023" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="11018:12023" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="12094:13791" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="13825:13983" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="14723:14733" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="14794:14800" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="15040:15141" ph="{}" />
+            <marker date="1509053833454" expanded="false" signature="15330:15341" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="15360:15366" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="15414:15866" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -415,29 +459,43 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#5407#5812#0" expanded="false" />
-            <element signature="e#5916#6171#0" expanded="false" />
-            <element signature="e#6407#6408#0" expanded="true" />
-            <element signature="e#6435#6436#0" expanded="true" />
-            <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-            <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-            <element signature="e#7791#7792#0" expanded="true" />
-            <element signature="e#7818#7819#0" expanded="true" />
-            <element signature="class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkWorldCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#reset#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="e#12143#12144#0" expanded="true" />
-            <element signature="method#show#0;class#ToolBarItem#0" expanded="false" />
-            <element signature="e#12381#12382#0" expanded="true" />
-            <element signature="e#12412#12413#0" expanded="true" />
-            <element signature="method#toggleImage#0;class#ToolBarItem#0" expanded="false" />
-            <element signature="e#12591#12592#0" expanded="true" />
-            <element signature="e#12650#12651#0" expanded="true" />
-            <element signature="e#12681#12682#0" expanded="true" />
-            <element signature="e#12713#12714#0" expanded="true" />
-            <element signature="method#setHilighted#0;class#ToolBarItem#0" expanded="false" />
+            <element signature="e#2932#3482#0" expanded="false" />
+            <element signature="e#6944#6945#0" expanded="true" />
+            <element signature="e#6972#6973#0" expanded="true" />
+            <element signature="class#Course#0" expanded="false" />
+            <element signature="e#7210#7211#0" expanded="true" />
+            <element signature="e#7251#7252#0" expanded="true" />
+            <element signature="e#7302#7303#0" expanded="true" />
+            <element signature="e#7340#7341#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8396#8397#0" expanded="true" />
+            <element signature="e#8444#8445#0" expanded="true" />
+            <element signature="e#8480#8481#0" expanded="true" />
+            <element signature="class#Body#0" expanded="false" />
+            <element signature="class#CollisionBody#0" expanded="false" />
+            <element signature="e#10359#10360#0" expanded="true" />
+            <element signature="e#10386#10387#0" expanded="true" />
+            <element signature="class#ToolBarItem#0" expanded="false" />
+            <element signature="e#14723#14724#0" expanded="true" />
+            <element signature="e#14965#14966#0" expanded="true" />
+            <element signature="e#14994#14995#0" expanded="true" />
+            <element signature="e#15173#15174#0" expanded="true" />
+            <element signature="e#15232#15233#0" expanded="true" />
+            <element signature="e#15263#15264#0" expanded="true" />
+            <element signature="e#15295#15296#0" expanded="true" />
+            <marker date="1509053833454" expanded="false" signature="9502:9513" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="9526:9532" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="9590:9812" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="9864:10023" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="11018:12023" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="12094:13791" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="13825:13983" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="14723:14733" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="14794:14800" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="15040:15141" ph="{}" />
+            <marker date="1509053833454" expanded="false" signature="15330:15341" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="15360:15366" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="15414:15866" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -463,29 +521,43 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#5407#5812#0" expanded="false" />
-            <element signature="e#5916#6171#0" expanded="false" />
-            <element signature="e#6407#6408#0" expanded="true" />
-            <element signature="e#6435#6436#0" expanded="true" />
-            <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-            <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-            <element signature="e#7791#7792#0" expanded="true" />
-            <element signature="e#7818#7819#0" expanded="true" />
-            <element signature="class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkWorldCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#reset#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="e#12143#12144#0" expanded="true" />
-            <element signature="method#show#0;class#ToolBarItem#0" expanded="false" />
-            <element signature="e#12381#12382#0" expanded="true" />
-            <element signature="e#12412#12413#0" expanded="true" />
-            <element signature="method#toggleImage#0;class#ToolBarItem#0" expanded="false" />
-            <element signature="e#12591#12592#0" expanded="true" />
-            <element signature="e#12650#12651#0" expanded="true" />
-            <element signature="e#12681#12682#0" expanded="true" />
-            <element signature="e#12713#12714#0" expanded="true" />
-            <element signature="method#setHilighted#0;class#ToolBarItem#0" expanded="false" />
+            <element signature="e#2932#3482#0" expanded="false" />
+            <element signature="e#6944#6945#0" expanded="true" />
+            <element signature="e#6972#6973#0" expanded="true" />
+            <element signature="class#Course#0" expanded="false" />
+            <element signature="e#7210#7211#0" expanded="true" />
+            <element signature="e#7251#7252#0" expanded="true" />
+            <element signature="e#7302#7303#0" expanded="true" />
+            <element signature="e#7340#7341#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8396#8397#0" expanded="true" />
+            <element signature="e#8444#8445#0" expanded="true" />
+            <element signature="e#8480#8481#0" expanded="true" />
+            <element signature="class#Body#0" expanded="false" />
+            <element signature="class#CollisionBody#0" expanded="false" />
+            <element signature="e#10359#10360#0" expanded="true" />
+            <element signature="e#10386#10387#0" expanded="true" />
+            <element signature="class#ToolBarItem#0" expanded="false" />
+            <element signature="e#14723#14724#0" expanded="true" />
+            <element signature="e#14965#14966#0" expanded="true" />
+            <element signature="e#14994#14995#0" expanded="true" />
+            <element signature="e#15173#15174#0" expanded="true" />
+            <element signature="e#15232#15233#0" expanded="true" />
+            <element signature="e#15263#15264#0" expanded="true" />
+            <element signature="e#15295#15296#0" expanded="true" />
+            <marker date="1509053833454" expanded="false" signature="9502:9513" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="9526:9532" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="9590:9812" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="9864:10023" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="11018:12023" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="12094:13791" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="13825:13983" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="14723:14733" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="14794:14800" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="15040:15141" ph="{}" />
+            <marker date="1509053833454" expanded="false" signature="15330:15341" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="15360:15366" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="15414:15866" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -526,32 +598,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LineRider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="233" column="69" lean-forward="false" selection-start-line="233" selection-start-column="69" selection-end-line="233" selection-end-column="69" />
           <folding>
-            <element signature="e#5407#5812#0" expanded="false" />
-            <element signature="e#5916#6171#0" expanded="false" />
-            <element signature="e#6407#6408#0" expanded="true" />
-            <element signature="e#6435#6436#0" expanded="true" />
-            <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-            <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-            <element signature="e#7791#7792#0" expanded="true" />
-            <element signature="e#7818#7819#0" expanded="true" />
-            <element signature="class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkWorldCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#reset#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="e#12143#12144#0" expanded="true" />
-            <element signature="method#show#0;class#ToolBarItem#0" expanded="false" />
-            <element signature="e#12381#12382#0" expanded="true" />
-            <element signature="e#12412#12413#0" expanded="true" />
-            <element signature="method#toggleImage#0;class#ToolBarItem#0" expanded="false" />
-            <element signature="e#12591#12592#0" expanded="true" />
-            <element signature="e#12650#12651#0" expanded="true" />
-            <element signature="e#12681#12682#0" expanded="true" />
-            <element signature="e#12713#12714#0" expanded="true" />
-            <element signature="method#setHilighted#0;class#ToolBarItem#0" expanded="false" />
+            <element signature="e#2932#3482#0" expanded="false" />
+            <element signature="e#6944#6945#0" expanded="true" />
+            <element signature="e#6972#6973#0" expanded="true" />
+            <element signature="class#Course#0" expanded="false" />
+            <element signature="e#7210#7211#0" expanded="true" />
+            <element signature="e#7251#7252#0" expanded="true" />
+            <element signature="e#7302#7303#0" expanded="true" />
+            <element signature="e#7340#7341#0" expanded="true" />
+            <element signature="e#8357#8358#0" expanded="true" />
+            <element signature="e#8396#8397#0" expanded="true" />
+            <element signature="e#8444#8445#0" expanded="true" />
+            <element signature="e#8480#8481#0" expanded="true" />
+            <element signature="class#Body#0" expanded="false" />
+            <element signature="class#CollisionBody#0" expanded="false" />
+            <element signature="e#10359#10360#0" expanded="true" />
+            <element signature="e#10386#10387#0" expanded="true" />
+            <element signature="class#ToolBarItem#0" expanded="false" />
+            <element signature="e#14723#14724#0" expanded="true" />
+            <element signature="e#14965#14966#0" expanded="true" />
+            <element signature="e#14994#14995#0" expanded="true" />
+            <element signature="e#15173#15174#0" expanded="true" />
+            <element signature="e#15232#15233#0" expanded="true" />
+            <element signature="e#15263#15264#0" expanded="true" />
+            <element signature="e#15295#15296#0" expanded="true" />
+            <marker date="1509053833454" expanded="false" signature="9502:9513" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="9526:9532" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="9590:9812" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="9864:10023" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="11018:12023" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="12094:13791" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="13825:13983" ph="{...}" />
+            <marker date="1509053833454" expanded="false" signature="14723:14733" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="14794:14800" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="15040:15141" ph="{}" />
+            <marker date="1509053833454" expanded="false" signature="15330:15341" ph=" { " />
+            <marker date="1509053833454" expanded="false" signature="15360:15366" ph=" }" />
+            <marker date="1509053833454" expanded="false" signature="15414:15866" ph="{...}" />
           </folding>
         </state>
       </provider>

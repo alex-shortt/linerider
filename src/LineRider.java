@@ -5,7 +5,6 @@ import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
@@ -19,10 +18,13 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
-enum ToolItem {
-    PENCIL, ERASER, BALLPLACER
+enum PenType {
+    PENCIL, ERASER, BALLPLACER, HAND
+}
+
+enum ItemAction {
+    SET_PENCIL, SET_ERASER, SET_BALLPLACER, SET_HAND, TRASH
 }
 
 public class LineRider extends Application {
@@ -30,9 +32,8 @@ public class LineRider extends Application {
     private boolean physicsRunning = false;
     private static Canvas canvas;
     private static Group root;
-    private static ToolItem penType = ToolItem.PENCIL;
+    private static PenType penType = PenType.PENCIL;
 
-    //TODO: Add Clear Button - toolbar
     //TODO: Panning (hand tool) - toolbar
     //TODO: ball placer tool (place ball where you click) - toolbar
     //TODO: clear balls tool - toolbar
@@ -45,82 +46,96 @@ public class LineRider extends Application {
         canvas = new Canvas(800, 800);
         root.getChildren().addAll(canvas);
 
-        PhysicsBody body = new PhysicsBody(root, new Circle(15, Color.BLUE), .999, .9, 0, -0.15);
-        ArrayList<CollisionBody> bodies = new ArrayList<>();
+        World world = new World(root);
+        Course course = new Course(root);
 
+        //add first ball
+        world.addBody(new PhysicsBody(root, new Circle(15, Color.BLUE), .999, .9, 0, -0.15));
+
+        //toolbar
         ArrayList<ToolBarItem> toolbar = new ArrayList<>();
         double spacing = 20;
         final double TOOL_HEIGHT = 30;
-        ToolBarItem pencil = new ToolBarItem(canvas, "/assets/pencil.png", 150, 5, TOOL_HEIGHT, ToolItem.PENCIL);
+        ToolBarItem pencil = new ToolBarItem(canvas, "/assets/pencil.png", 150, 5, TOOL_HEIGHT, ItemAction.SET_PENCIL);
         toolbar.add(pencil);
-        ToolBarItem eraser = new ToolBarItem(canvas, "/assets/eraser.png", pencil.getEndX() + spacing, 5, TOOL_HEIGHT, ToolItem.ERASER);
-        toolbar.add(eraser);
-        ToolBarItem ballPlacer = new ToolBarItem(canvas, "/assets/ball.png", eraser.getEndX() + spacing, 5, TOOL_HEIGHT, ToolItem.BALLPLACER);
-        toolbar.add(ballPlacer);
-
         pencil.setHilighted(true);
+        ToolBarItem eraser = new ToolBarItem(canvas, "/assets/eraser.png", pencil.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_ERASER);
+        toolbar.add(eraser);
+        ToolBarItem ballPlacer = new ToolBarItem(canvas, "/assets/ball.png", eraser.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_BALLPLACER);
+        toolbar.add(ballPlacer);
+        ToolBarItem hand = new ToolBarItem(canvas, "/assets/hand.png", ballPlacer.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_HAND);
+        toolbar.add(hand);
+        ToolBarItem trash = new ToolBarItem(canvas, "/assets/trash.png", hand.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.TRASH);
+        toolbar.add(trash);
 
-        stage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            boolean clickedToolbar = false;
-            for (ToolBarItem tool : toolbar) {
-                if (tool.getBounds().contains(new Point2D(event.getX(), event.getY()))) {
-                    //click event
-                    switch (tool.getItemType()) {
-                        case PENCIL:
-                            penType = ToolItem.PENCIL;
-                            break;
-                        case ERASER:
-                            penType = ToolItem.ERASER;
-                            break;
-                        case BALLPLACER:
-                            penType = ToolItem.BALLPLACER;
-                            break;
-                    }
-                    for (ToolBarItem tool2 : toolbar) {
-                        tool2.setHilighted(false);
-                    }
-                    tool.setHilighted(true);
-                    clickedToolbar = true;
-                }
-            }
-            if (!clickedToolbar && penType == ToolItem.BALLPLACER) {
-                System.out.println("place ball");
-            } else if (!clickedToolbar && penType == ToolItem.ERASER) {
-                Shape test = new Circle(event.getX(), event.getY(), 10);
-                for (int i = bodies.size() - 1; i >= 0; i--) {
-                    CollisionBody line = bodies.get(i);
-                    Shape intersect = Shape.intersect(line.getShape(), test);
-                    if (intersect.getBoundsInLocal().getWidth() != -1 || intersect.getBoundsInLocal().getHeight() != -1) {
-                        root.getChildren().remove(line.getLine());
-                        bodies.remove(line);
-                    }
-                }
-            }
-        });
 
-        //Drawing lines
+        //Drawing collisionBodies
         double[] startCoords = new double[2];
         stage.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
             startCoords[0] = event.getX();
             startCoords[1] = event.getY();
         });
         stage.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
-            if (penType == ToolItem.PENCIL && Math.hypot(startCoords[0] - event.getX(), startCoords[1] - event.getY()) > LINE_LENGTH) {
+            if (penType == PenType.PENCIL && Math.hypot(startCoords[0] - event.getX(), startCoords[1] - event.getY()) > LINE_LENGTH) {
                 CollisionBody newLine = new CollisionBody(root, new Line(startCoords[0], startCoords[1], event.getX(), event.getY()));
-                bodies.add(newLine);
+                course.addBody(newLine);
 
                 startCoords[0] = event.getX();
                 startCoords[1] = event.getY();
-            } else if (penType == ToolItem.ERASER) {
-                Shape test = new Circle(event.getX(), event.getY(), 10);
-                for (int i = bodies.size() - 1; i >= 0; i--) {
-                    CollisionBody line = bodies.get(i);
-                    Shape intersect = Shape.intersect(line.getShape(), test);
-                    if (intersect.getBoundsInLocal().getWidth() != -1 || intersect.getBoundsInLocal().getHeight() != -1) {
-                        root.getChildren().remove(line.getLine());
-                        bodies.remove(line);
+            } else if (penType == PenType.ERASER) {
+                course.erase(event.getX(), event.getY());
+            }
+        });
+        stage.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            boolean clickedToolbar = false;
+            for (ToolBarItem tool : toolbar) {
+                if (tool.getBounds().contains(new Point2D(event.getX(), event.getY()))) {
+                    //click event
+                    switch (tool.getActionType()) {
+                        case SET_PENCIL:
+                            penType = PenType.PENCIL;
+                            for (ToolBarItem tool2 : toolbar) {
+                                tool2.setHilighted(false);
+                            }
+                            tool.setHilighted(true);
+                            break;
+                        case SET_ERASER:
+                            penType = PenType.ERASER;
+                            for (ToolBarItem tool2 : toolbar) {
+                                tool2.setHilighted(false);
+                            }
+                            tool.setHilighted(true);
+                            break;
+                        case SET_HAND:
+                            penType = PenType.HAND;
+                            for (ToolBarItem tool2 : toolbar) {
+                                tool2.setHilighted(false);
+                            }
+                            tool.setHilighted(true);
+                            break;
+                        case SET_BALLPLACER:
+                            penType = PenType.BALLPLACER;
+                            for (ToolBarItem tool2 : toolbar) {
+                                tool2.setHilighted(false);
+                            }
+                            tool.setHilighted(true);
+                            break;
+                        case TRASH:
+                            course.clear();
+                            world.resetBodies();
+                            break;
                     }
+                    clickedToolbar = true;
                 }
+            }
+            if (!clickedToolbar && penType == PenType.BALLPLACER) {
+                PhysicsBody newbody = new PhysicsBody(root, new Circle(15, Color.BLUE), .999, .9, 0, -0.15);
+                newbody.reset((int) event.getX(), (int) event.getY());
+                world.addBody(newbody);
+            } else if (!clickedToolbar && penType == PenType.ERASER) {
+                course.erase(event.getX(), event.getY());
+            } else if (!clickedToolbar && penType == PenType.HAND) {
+
             }
         });
 
@@ -130,7 +145,7 @@ public class LineRider extends Application {
                 case "SPACE":
                     physicsRunning = !physicsRunning;
                     if (!physicsRunning) {
-                        body.reset(50, 50);
+                        world.resetBodies();
                     }
                     break;
                 default:
@@ -142,9 +157,7 @@ public class LineRider extends Application {
         //Physics Loop
         final Timeline loop = new Timeline(new KeyFrame(Duration.millis(10), t -> {
             if (physicsRunning) {
-                body.updatePhysics();
-                body.checkWorldCollisions(new BoundingBox(0, 0, scene.getWidth(), scene.getHeight()));
-                body.checkBodyCollisions(bodies);
+                world.updateBodies(new BoundingBox(0, 0, scene.getWidth(), scene.getHeight()), course);
             }
         }));
         loop.setCycleCount(Timeline.INDEFINITE);
@@ -158,6 +171,78 @@ public class LineRider extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+}
+
+class Course {
+    ArrayList<CollisionBody> collisionBodies;
+    Group root;
+
+    public Course(Group newRoot) {
+        root = newRoot;
+        collisionBodies = new ArrayList<>();
+    }
+
+    public void addBody(CollisionBody body) {
+        collisionBodies.add(body);
+    }
+
+    public ArrayList<CollisionBody> getBodies() {
+        return collisionBodies;
+    }
+
+    public void clear() {
+        for (int i = collisionBodies.size() - 1; i >= 0; i--) {
+            CollisionBody line = collisionBodies.get(i);
+            root.getChildren().remove(line.getLine());
+            collisionBodies.remove(line);
+        }
+    }
+
+    public void erase(double x, double y) {
+        Shape test = new Circle(x, y, 10);
+        for (int i = collisionBodies.size() - 1; i >= 0; i--) {
+            CollisionBody line = collisionBodies.get(i);
+            Shape intersect = Shape.intersect(line.getShape(), test);
+            if (intersect.getBoundsInLocal().getWidth() != -1 || intersect.getBoundsInLocal().getHeight() != -1) {
+                root.getChildren().remove(line.getLine());
+                collisionBodies.remove(line);
+            }
+        }
+    }
+}
+
+class World {
+    ArrayList<PhysicsBody> physicsBodies;
+    Group root;
+
+    public World(Group newRoot) {
+        root = newRoot;
+        physicsBodies = new ArrayList<>();
+    }
+
+    public void addBody(PhysicsBody body){
+        physicsBodies.add(body);
+    }
+
+    public ArrayList<PhysicsBody> getBodies(){
+        return physicsBodies;
+    }
+
+    public void resetBodies(){
+        for(int i = physicsBodies.size() - 1; i > 0; i--){
+            root.getChildren().remove(physicsBodies.get(i).getShape());
+            physicsBodies.remove(i);
+        }
+        physicsBodies.get(0).reset(50, 50);
+    }
+
+    public void updateBodies(Bounds bounds, Course course){
+        for(PhysicsBody body : physicsBodies){
+            body.checkWorldCollisions(bounds);
+            body.checkBodyCollisions(course.getBodies());
+            body.updatePhysics();
+        }
     }
 }
 
@@ -327,16 +412,16 @@ class ToolBarItem {
     double width;
     Canvas canvas;
     boolean isHilighted = false;
-    ToolItem itemType;
+    ItemAction action;
 
-    public ToolBarItem(Canvas newCanvas, String url, double posX, double posY, double setHeight, ToolItem type) {
+    public ToolBarItem(Canvas newCanvas, String url, double posX, double posY, double setHeight, ItemAction itemAction) {
         image = new Image(url);
         x = posX;
         y = posY;
         height = setHeight;
         width = image.getWidth() * (height / image.getHeight());
         canvas = newCanvas;
-        itemType = type;
+        action = itemAction;
 
         canvas.getGraphicsContext2D().drawImage(image, x, y, width, height);
     }
@@ -350,8 +435,8 @@ class ToolBarItem {
         canvas.getGraphicsContext2D().drawImage(image, x, y, width, height);
     }
 
-    public ToolItem getItemType() {
-        return itemType;
+    public ItemAction getActionType() {
+        return action;
     }
 
     public void toggleImage(String newUrl) {
