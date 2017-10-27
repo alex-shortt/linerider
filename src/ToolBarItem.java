@@ -1,5 +1,6 @@
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
+import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 
@@ -12,8 +13,9 @@ class ToolBarItem {
     Canvas canvas;
     boolean isHilighted = false;
     ItemAction action;
+    Group root;
 
-    public ToolBarItem(Canvas newCanvas, String url, double posX, double posY, double setHeight, ItemAction itemAction) {
+    public ToolBarItem(Group newRoot, Canvas newCanvas, String url, double posX, double posY, double setHeight, ItemAction itemAction) {
         image = new Image(url);
         x = posX;
         y = posY;
@@ -21,6 +23,7 @@ class ToolBarItem {
         width = image.getWidth() * (height / image.getHeight());
         canvas = newCanvas;
         action = itemAction;
+        root = newRoot;
 
         canvas.getGraphicsContext2D().drawImage(image, x, y, width, height);
     }
@@ -44,7 +47,7 @@ class ToolBarItem {
     }
 
     public Bounds getBounds() {
-        return new BoundingBox(x, y, width, height);
+        return new BoundingBox(x + root.getLayoutX(), y + root.getLayoutY(), width, height);
     }
 
     public double getEndX() {

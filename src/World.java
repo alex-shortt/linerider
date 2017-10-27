@@ -30,7 +30,7 @@ class World {
 
     public void updateBodies(Bounds bounds, Course course){
         for(PhysicsBody body : physicsBodies){
-            body.checkWorldCollisions(bounds);
+            //body.checkWorldCollisions(bounds);
             body.checkBodyCollisions(course.getBodies());
             body.updatePhysics();
         }

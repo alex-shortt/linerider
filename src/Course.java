@@ -29,6 +29,12 @@ class Course {
         }
     }
 
+    public void addBodies(ArrayList<CollisionBody> bodies){
+        for(CollisionBody body: bodies){
+            addBody(body);
+        }
+    }
+
     public void erase(double x, double y) {
         Shape test = new Circle(x, y, 10);
         for (int i = collisionBodies.size() - 1; i >= 0; i--) {

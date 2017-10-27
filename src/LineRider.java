@@ -2,23 +2,24 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.BoundingBox;
-import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+
+import static javafx.scene.input.KeyCode.SPACE;
 
 enum PenType {
     PENCIL, ERASER, BALLPLACER, HAND
@@ -29,15 +30,13 @@ enum ItemAction {
 }
 
 public class LineRider extends Application {
-    private final int LINE_LENGTH = 24;
+    private final int LINE_LENGTH = 10;
     private boolean physicsRunning = false;
     private static Canvas canvas;
     private static Group root;
     private static PenType penType = PenType.PENCIL;
 
     //TODO: Panning (hand tool) - toolbar
-    //TODO: ball placer tool (place ball where you click) - toolbar
-    //TODO: clear balls tool - toolbar
     //TODO: Add Face Texture
     //TODO: Add rotation physics
 
@@ -49,6 +48,7 @@ public class LineRider extends Application {
 
         World world = new World(root);
         Course course = new Course(root);
+        CourseHandler courseHandler = new CourseHandler(root);
 
         //add first ball
         world.addBody(new PhysicsBody(root, new Circle(15, Color.BLUE), .999, .9, 0, -0.15));
@@ -57,16 +57,16 @@ public class LineRider extends Application {
         ArrayList<ToolBarItem> toolbar = new ArrayList<>();
         double spacing = 20;
         final double TOOL_HEIGHT = 30;
-        ToolBarItem pencil = new ToolBarItem(canvas, "/assets/pencil.png", 150, 5, TOOL_HEIGHT, ItemAction.SET_PENCIL);
+        ToolBarItem pencil = new ToolBarItem(root, canvas, "/assets/pencil.png", 150, 5, TOOL_HEIGHT, ItemAction.SET_PENCIL);
         toolbar.add(pencil);
         pencil.setHilighted(true);
-        ToolBarItem eraser = new ToolBarItem(canvas, "/assets/eraser.png", pencil.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_ERASER);
+        ToolBarItem eraser = new ToolBarItem(root, canvas, "/assets/eraser.png", pencil.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_ERASER);
         toolbar.add(eraser);
-        ToolBarItem ballPlacer = new ToolBarItem(canvas, "/assets/ball.png", eraser.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_BALLPLACER);
+        ToolBarItem ballPlacer = new ToolBarItem(root, canvas, "/assets/ball.png", eraser.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_BALLPLACER);
         toolbar.add(ballPlacer);
-        ToolBarItem hand = new ToolBarItem(canvas, "/assets/hand.png", ballPlacer.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_HAND);
+        ToolBarItem hand = new ToolBarItem(root, canvas, "/assets/hand.png", ballPlacer.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_HAND);
         toolbar.add(hand);
-        ToolBarItem trash = new ToolBarItem(canvas, "/assets/trash.png", hand.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.TRASH);
+        ToolBarItem trash = new ToolBarItem(root, canvas, "/assets/trash.png", hand.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.TRASH);
         toolbar.add(trash);
 
 
@@ -85,6 +85,12 @@ public class LineRider extends Application {
                 startCoords[1] = event.getY();
             } else if (penType == PenType.ERASER) {
                 course.erase(event.getX(), event.getY());
+            } else if (penType == PenType.HAND) {
+                root.setLayoutX(root.getLayoutX() + (event.getX() - startCoords[0]));
+                root.setLayoutY(root.getLayoutY() + (event.getY() - startCoords[1]));
+
+                startCoords[0] = event.getX();
+                startCoords[1] = event.getY();
             }
         });
         stage.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event) -> {
@@ -141,19 +147,37 @@ public class LineRider extends Application {
             }
         });
 
-        //Stop and Start keypresses
         stage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
-            switch (event.getCode().toString()) {
-                case "SPACE":
+            switch (event.getCode()) {
+                case SPACE:
                     physicsRunning = !physicsRunning;
                     if (!physicsRunning) {
                         world.resetBodies();
                     }
                     break;
+                case ALT:
+                    try {
+                        courseHandler.saveCourse(course.getBodies());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case P:
+                    try {
+                        ArrayList<CollisionBody> bodies = courseHandler.loadCourse();
+                        if(bodies == null){
+                            JOptionPane.showMessageDialog(new JOptionPane(), "Could not find World");
+                            break;
+                        }
+                        course.clear();
+                        course.addBodies(bodies);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
                 default:
                     break;
             }
-            System.out.println(event.getCode());
         });
 
         //Physics Loop
