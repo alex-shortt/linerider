@@ -2,16 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="866a3a91-02df-4a8b-aa59-406c0e965786" name="Default" comment="">
-<<<<<<< HEAD
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Line Rider/TickListener.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Line Rider/Ticker.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/TickListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Ticker.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Body.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CollisionBody.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Course.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PhysicsBody.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ToolBarItem.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/World.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Line Rider/Body.class" afterPath="$PROJECT_DIR$/out/production/Line Rider/Body.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Line Rider/CollisionBody.class" afterPath="$PROJECT_DIR$/out/production/Line Rider/CollisionBody.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Line Rider/LineRider$1.class" afterPath="$PROJECT_DIR$/out/production/Line Rider/LineRider$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Line Rider/LineRider.class" afterPath="$PROJECT_DIR$/out/production/Line Rider/LineRider.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Line Rider/PhysicsBody.class" afterPath="$PROJECT_DIR$/out/production/Line Rider/PhysicsBody.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-=======
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Line Rider.iml" afterPath="$PROJECT_DIR$/Line Rider.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LineRider.java" afterPath="$PROJECT_DIR$/src/LineRider.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,65 +39,19 @@
       <file leaf-file-name="LineRider.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LineRider.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="476">
-              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1530#1937#0" expanded="false" />
-                <element signature="class#Body#0" expanded="false" />
-                <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
-                <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-                <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-                <element signature="class#CollisionBody#0" expanded="false" />
-                <element signature="method#CollisionBody#0;class#CollisionBody#0" expanded="false" />
-                <element signature="class#PhysicsBody#0" expanded="false" />
-                <element signature="method#PhysicsBody#0;class#PhysicsBody#0" expanded="false" />
-                <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-                <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-=======
-            <state relative-caret-position="180">
-              <caret line="233" column="69" lean-forward="false" selection-start-line="233" selection-start-column="69" selection-end-line="233" selection-end-column="69" />
-              <folding>
-                <element signature="e#2932#3482#0" expanded="false" />
-                <element signature="e#6944#6945#0" expanded="true" />
-                <element signature="e#6972#6973#0" expanded="true" />
-                <element signature="class#Course#0" expanded="false" />
-                <element signature="e#7210#7211#0" expanded="true" />
-                <element signature="e#7251#7252#0" expanded="true" />
-                <element signature="e#7302#7303#0" expanded="true" />
-                <element signature="e#7340#7341#0" expanded="true" />
-                <element signature="e#8357#8358#0" expanded="true" />
-                <element signature="e#8396#8397#0" expanded="true" />
-                <element signature="e#8444#8445#0" expanded="true" />
-                <element signature="e#8480#8481#0" expanded="true" />
-                <element signature="class#Body#0" expanded="false" />
-                <element signature="class#CollisionBody#0" expanded="false" />
-                <element signature="e#10359#10360#0" expanded="true" />
-                <element signature="e#10386#10387#0" expanded="true" />
-                <element signature="class#ToolBarItem#0" expanded="false" />
-                <element signature="e#14723#14724#0" expanded="true" />
-                <element signature="e#14965#14966#0" expanded="true" />
-                <element signature="e#14994#14995#0" expanded="true" />
-                <element signature="e#15173#15174#0" expanded="true" />
-                <element signature="e#15232#15233#0" expanded="true" />
-                <element signature="e#15263#15264#0" expanded="true" />
-                <element signature="e#15295#15296#0" expanded="true" />
-                <marker date="1509053833454" expanded="false" signature="9502:9513" ph=" { " />
-                <marker date="1509053833454" expanded="false" signature="9526:9532" ph=" }" />
-                <marker date="1509053833454" expanded="false" signature="9590:9812" ph="{...}" />
-                <marker date="1509053833454" expanded="false" signature="9864:10023" ph="{...}" />
-                <marker date="1509053833454" expanded="false" signature="11018:12023" ph="{...}" />
-                <marker date="1509053833454" expanded="false" signature="12094:13791" ph="{...}" />
-                <marker date="1509053833454" expanded="false" signature="13825:13983" ph="{...}" />
-                <marker date="1509053833454" expanded="false" signature="14723:14733" ph=" { " />
-                <marker date="1509053833454" expanded="false" signature="14794:14800" ph=" }" />
-                <marker date="1509053833454" expanded="false" signature="15040:15141" ph="{}" />
-                <marker date="1509053833454" expanded="false" signature="15330:15341" ph=" { " />
-                <marker date="1509053833454" expanded="false" signature="15360:15366" ph=" }" />
-                <marker date="1509053833454" expanded="false" signature="15414:15866" ph="{...}" />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
-              </folding>
+            <state relative-caret-position="561">
+              <caret line="53" column="64" lean-forward="false" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhysicsBody.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PhysicsBody.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -106,16 +69,11 @@
     <findStrings>
       <find>scene</find>
       <find>root</find>
-<<<<<<< HEAD
-      <find>abs</find>
-      <find>checkC</find>
-      <find>canvas</find>
-=======
       <find>getChildren</find>
       <find>getchildren</find>
       <find>pentype</find>
       <find>TRASH</find>
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
+      <find>Color</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -132,16 +90,18 @@
         <option value="$PROJECT_DIR$/src/Ticker.java" />
         <option value="$PROJECT_DIR$/src/TickListener.java" />
         <option value="$PROJECT_DIR$/src/drawLines.java" />
+        <option value="$PROJECT_DIR$/src/CollisionBody.java" />
+        <option value="$PROJECT_DIR$/src/Body.java" />
+        <option value="$PROJECT_DIR$/src/ToolbarItem.java" />
+        <option value="$PROJECT_DIR$/src/World.java" />
+        <option value="$PROJECT_DIR$/src/Course.java" />
         <option value="$PROJECT_DIR$/src/LineRider.java" />
+        <option value="$PROJECT_DIR$/src/PhysicsBody.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-<<<<<<< HEAD
-    <option name="x" value="-656" />
-=======
     <option name="x" value="98" />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1096" />
@@ -161,14 +121,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-<<<<<<< HEAD
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-=======
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -185,7 +141,7 @@
               <item name="linerider" type="b2602c69:ProjectViewProjectNode" />
               <item name="linerider" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="LineRider.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
             <path>
               <item name="linerider" type="b2602c69:ProjectViewProjectNode" />
@@ -195,11 +151,6 @@
           <select />
         </subPane>
       </pane>
-<<<<<<< HEAD
-      <pane id="AndroidView" />
-=======
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -335,12 +286,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-<<<<<<< HEAD
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-=======
-    <frame x="-5" y="-5" width="1379" height="923" extended-state="6" />
     <editor active="true" />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -350,38 +297,25 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1814301" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14978679" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-=======
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24634147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24634147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991952" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14630578" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14765458" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15688367" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24878049" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24866596" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991952" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -389,11 +323,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-<<<<<<< HEAD
-      <option name="time" value="31" />
-=======
-      <option name="time" value="15" />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -402,87 +332,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-<<<<<<< HEAD
-            <element signature="imports" expanded="true" />
-            <element signature="e#1530#1937#0" expanded="false" />
-            <element signature="class#Body#0" expanded="false" />
-            <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
-            <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-            <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-            <element signature="class#CollisionBody#0" expanded="false" />
-            <element signature="method#CollisionBody#0;class#CollisionBody#0" expanded="false" />
-            <element signature="class#PhysicsBody#0" expanded="false" />
-            <element signature="method#PhysicsBody#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-=======
-            <element signature="e#2932#3482#0" expanded="false" />
-            <element signature="e#6944#6945#0" expanded="true" />
-            <element signature="e#6972#6973#0" expanded="true" />
-            <element signature="class#Course#0" expanded="false" />
-            <element signature="e#7210#7211#0" expanded="true" />
-            <element signature="e#7251#7252#0" expanded="true" />
-            <element signature="e#7302#7303#0" expanded="true" />
-            <element signature="e#7340#7341#0" expanded="true" />
-            <element signature="e#8357#8358#0" expanded="true" />
-            <element signature="e#8396#8397#0" expanded="true" />
-            <element signature="e#8444#8445#0" expanded="true" />
-            <element signature="e#8480#8481#0" expanded="true" />
-            <element signature="class#Body#0" expanded="false" />
-            <element signature="class#CollisionBody#0" expanded="false" />
-            <element signature="e#10359#10360#0" expanded="true" />
-            <element signature="e#10386#10387#0" expanded="true" />
-            <element signature="class#ToolBarItem#0" expanded="false" />
-            <element signature="e#14723#14724#0" expanded="true" />
-            <element signature="e#14965#14966#0" expanded="true" />
-            <element signature="e#14994#14995#0" expanded="true" />
-            <element signature="e#15173#15174#0" expanded="true" />
-            <element signature="e#15232#15233#0" expanded="true" />
-            <element signature="e#15263#15264#0" expanded="true" />
-            <element signature="e#15295#15296#0" expanded="true" />
-            <marker date="1509053833454" expanded="false" signature="9502:9513" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="9526:9532" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="9590:9812" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="9864:10023" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="11018:12023" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="12094:13791" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="13825:13983" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="14723:14733" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="14794:14800" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="15040:15141" ph="{}" />
-            <marker date="1509053833454" expanded="false" signature="15330:15341" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="15360:15366" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="15414:15866" ph="{...}" />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LineRider.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1530#1937#0" expanded="false" />
-            <element signature="class#Body#0" expanded="false" />
-            <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
-            <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-            <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-            <element signature="class#CollisionBody#0" expanded="false" />
-            <element signature="method#CollisionBody#0;class#CollisionBody#0" expanded="false" />
-            <element signature="class#PhysicsBody#0" expanded="false" />
-            <element signature="method#PhysicsBody#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-          </folding>
-=======
-        <state relative-caret-position="221">
-          <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
           <folding />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
         </state>
       </provider>
     </entry>
@@ -498,69 +356,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-<<<<<<< HEAD
-            <element signature="imports" expanded="true" />
-            <element signature="e#1530#1937#0" expanded="false" />
-            <element signature="class#Body#0" expanded="false" />
-            <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
-            <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-            <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-            <element signature="class#CollisionBody#0" expanded="false" />
-            <element signature="method#CollisionBody#0;class#CollisionBody#0" expanded="false" />
-            <element signature="class#PhysicsBody#0" expanded="false" />
-            <element signature="method#PhysicsBody#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-          </folding>
-=======
-            <element signature="e#2932#3482#0" expanded="false" />
-            <element signature="e#6944#6945#0" expanded="true" />
-            <element signature="e#6972#6973#0" expanded="true" />
-            <element signature="class#Course#0" expanded="false" />
-            <element signature="e#7210#7211#0" expanded="true" />
-            <element signature="e#7251#7252#0" expanded="true" />
-            <element signature="e#7302#7303#0" expanded="true" />
-            <element signature="e#7340#7341#0" expanded="true" />
-            <element signature="e#8357#8358#0" expanded="true" />
-            <element signature="e#8396#8397#0" expanded="true" />
-            <element signature="e#8444#8445#0" expanded="true" />
-            <element signature="e#8480#8481#0" expanded="true" />
-            <element signature="class#Body#0" expanded="false" />
-            <element signature="class#CollisionBody#0" expanded="false" />
-            <element signature="e#10359#10360#0" expanded="true" />
-            <element signature="e#10386#10387#0" expanded="true" />
-            <element signature="class#ToolBarItem#0" expanded="false" />
-            <element signature="e#14723#14724#0" expanded="true" />
-            <element signature="e#14965#14966#0" expanded="true" />
-            <element signature="e#14994#14995#0" expanded="true" />
-            <element signature="e#15173#15174#0" expanded="true" />
-            <element signature="e#15232#15233#0" expanded="true" />
-            <element signature="e#15263#15264#0" expanded="true" />
-            <element signature="e#15295#15296#0" expanded="true" />
-            <marker date="1509053833454" expanded="false" signature="9502:9513" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="9526:9532" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="9590:9812" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="9864:10023" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="11018:12023" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="12094:13791" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="13825:13983" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="14723:14733" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="14794:14800" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="15040:15141" ph="{}" />
-            <marker date="1509053833454" expanded="false" signature="15330:15341" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="15360:15366" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="15414:15866" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ticker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
           <folding />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
         </state>
       </provider>
     </entry>
@@ -576,75 +372,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-<<<<<<< HEAD
-            <element signature="imports" expanded="true" />
-            <element signature="e#1530#1937#0" expanded="false" />
-            <element signature="class#Body#0" expanded="false" />
-            <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
-            <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-            <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-            <element signature="class#CollisionBody#0" expanded="false" />
-            <element signature="method#CollisionBody#0;class#CollisionBody#0" expanded="false" />
-            <element signature="class#PhysicsBody#0" expanded="false" />
-            <element signature="method#PhysicsBody#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-=======
-            <element signature="e#2932#3482#0" expanded="false" />
-            <element signature="e#6944#6945#0" expanded="true" />
-            <element signature="e#6972#6973#0" expanded="true" />
-            <element signature="class#Course#0" expanded="false" />
-            <element signature="e#7210#7211#0" expanded="true" />
-            <element signature="e#7251#7252#0" expanded="true" />
-            <element signature="e#7302#7303#0" expanded="true" />
-            <element signature="e#7340#7341#0" expanded="true" />
-            <element signature="e#8357#8358#0" expanded="true" />
-            <element signature="e#8396#8397#0" expanded="true" />
-            <element signature="e#8444#8445#0" expanded="true" />
-            <element signature="e#8480#8481#0" expanded="true" />
-            <element signature="class#Body#0" expanded="false" />
-            <element signature="class#CollisionBody#0" expanded="false" />
-            <element signature="e#10359#10360#0" expanded="true" />
-            <element signature="e#10386#10387#0" expanded="true" />
-            <element signature="class#ToolBarItem#0" expanded="false" />
-            <element signature="e#14723#14724#0" expanded="true" />
-            <element signature="e#14965#14966#0" expanded="true" />
-            <element signature="e#14994#14995#0" expanded="true" />
-            <element signature="e#15173#15174#0" expanded="true" />
-            <element signature="e#15232#15233#0" expanded="true" />
-            <element signature="e#15263#15264#0" expanded="true" />
-            <element signature="e#15295#15296#0" expanded="true" />
-            <marker date="1509053833454" expanded="false" signature="9502:9513" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="9526:9532" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="9590:9812" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="9864:10023" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="11018:12023" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="12094:13791" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="13825:13983" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="14723:14733" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="14794:14800" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="15040:15141" ph="{}" />
-            <marker date="1509053833454" expanded="false" signature="15330:15341" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="15360:15366" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="15414:15866" ph="{...}" />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/Ticker.java" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/Ticker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="56" lean-forward="true" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
+    <entry file="file://$PROJECT_DIR$/src/Ticker.java" />
     <entry file="file://$PROJECT_DIR$/Line Rider.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -656,210 +388,93 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-<<<<<<< HEAD
-            <element signature="imports" expanded="true" />
-            <element signature="e#1530#1937#0" expanded="false" />
-            <element signature="class#Body#0" expanded="false" />
-            <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
-            <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-            <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-            <element signature="class#CollisionBody#0" expanded="false" />
-            <element signature="method#CollisionBody#0;class#CollisionBody#0" expanded="false" />
-            <element signature="class#PhysicsBody#0" expanded="false" />
-            <element signature="method#PhysicsBody#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-=======
-            <element signature="e#2932#3482#0" expanded="false" />
-            <element signature="e#6944#6945#0" expanded="true" />
-            <element signature="e#6972#6973#0" expanded="true" />
-            <element signature="class#Course#0" expanded="false" />
-            <element signature="e#7210#7211#0" expanded="true" />
-            <element signature="e#7251#7252#0" expanded="true" />
-            <element signature="e#7302#7303#0" expanded="true" />
-            <element signature="e#7340#7341#0" expanded="true" />
-            <element signature="e#8357#8358#0" expanded="true" />
-            <element signature="e#8396#8397#0" expanded="true" />
-            <element signature="e#8444#8445#0" expanded="true" />
-            <element signature="e#8480#8481#0" expanded="true" />
-            <element signature="class#Body#0" expanded="false" />
-            <element signature="class#CollisionBody#0" expanded="false" />
-            <element signature="e#10359#10360#0" expanded="true" />
-            <element signature="e#10386#10387#0" expanded="true" />
-            <element signature="class#ToolBarItem#0" expanded="false" />
-            <element signature="e#14723#14724#0" expanded="true" />
-            <element signature="e#14965#14966#0" expanded="true" />
-            <element signature="e#14994#14995#0" expanded="true" />
-            <element signature="e#15173#15174#0" expanded="true" />
-            <element signature="e#15232#15233#0" expanded="true" />
-            <element signature="e#15263#15264#0" expanded="true" />
-            <element signature="e#15295#15296#0" expanded="true" />
-            <marker date="1509053833454" expanded="false" signature="9502:9513" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="9526:9532" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="9590:9812" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="9864:10023" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="11018:12023" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="12094:13791" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="13825:13983" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="14723:14733" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="14794:14800" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="15040:15141" ph="{}" />
-            <marker date="1509053833454" expanded="false" signature="15330:15341" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="15360:15366" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="15414:15866" ph="{...}" />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
-          </folding>
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/drawLines.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/geometry/Bounds.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="63" column="36" lean-forward="false" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/scene/shape/Line.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="72" column="11" lean-forward="false" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/scene/shape/Shape.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="1636" column="0" lean-forward="false" selection-start-line="1636" selection-start-column="0" selection-end-line="1636" selection-end-column="0" />
-          <folding>
-            <element signature="e#60380#60381#0" expanded="false" />
-            <element signature="e#60458#60459#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-=======
-    <entry file="file://$PROJECT_DIR$/src/TickListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="1" lean-forward="false" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Ticker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="56" lean-forward="false" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/TickListener.java" />
+    <entry file="file://$PROJECT_DIR$/src/Ticker.java" />
     <entry file="file://$PROJECT_DIR$/src/drawLines.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/beans/property/DoublePropertyBase.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/scene/Node.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/geometry/Bounds.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/scene/shape/Line.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/scene/shape/Shape.java" />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
     <entry file="file://$PROJECT_DIR$/Line Rider.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-<<<<<<< HEAD
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TickListener.java" />
-    <entry file="file://$PROJECT_DIR$/src/Ticker.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/beans/property/DoublePropertyBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-794">
-          <caret line="131" column="0" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_11/javafx-src.zip!/javafx/scene/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="2415" column="0" lean-forward="false" selection-start-line="2415" selection-start-column="0" selection-end-line="2415" selection-end-column="0" />
-          <folding>
-            <element signature="e#97935#97936#0" expanded="true" />
-          </folding>
-        </state>
-=======
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/pencil.PNG">
       <provider selected="true" editor-type-id="images">
         <state />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CollisionBody.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" column="1" lean-forward="false" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Body.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="7" lean-forward="false" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ToolBarItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PhysicsBody.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LineRider.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="476">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1530#1937#0" expanded="false" />
-            <element signature="class#Body#0" expanded="false" />
-            <element signature="method#collidesWith#0;class#Body#0" expanded="false" />
-            <element signature="method#getAngleFromXY#0;class#Body#0" expanded="false" />
-            <element signature="method#normalizeAngle#0;class#Body#0" expanded="false" />
-            <element signature="class#CollisionBody#0" expanded="false" />
-            <element signature="method#CollisionBody#0;class#CollisionBody#0" expanded="false" />
-            <element signature="class#PhysicsBody#0" expanded="false" />
-            <element signature="method#PhysicsBody#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#checkBodyCollisions#0;class#PhysicsBody#0" expanded="false" />
-            <element signature="method#updatePhysics#0;class#PhysicsBody#0" expanded="false" />
-=======
-        <state relative-caret-position="180">
-          <caret line="233" column="69" lean-forward="false" selection-start-line="233" selection-start-column="69" selection-end-line="233" selection-end-column="69" />
-          <folding>
-            <element signature="e#2932#3482#0" expanded="false" />
-            <element signature="e#6944#6945#0" expanded="true" />
-            <element signature="e#6972#6973#0" expanded="true" />
-            <element signature="class#Course#0" expanded="false" />
-            <element signature="e#7210#7211#0" expanded="true" />
-            <element signature="e#7251#7252#0" expanded="true" />
-            <element signature="e#7302#7303#0" expanded="true" />
-            <element signature="e#7340#7341#0" expanded="true" />
-            <element signature="e#8357#8358#0" expanded="true" />
-            <element signature="e#8396#8397#0" expanded="true" />
-            <element signature="e#8444#8445#0" expanded="true" />
-            <element signature="e#8480#8481#0" expanded="true" />
-            <element signature="class#Body#0" expanded="false" />
-            <element signature="class#CollisionBody#0" expanded="false" />
-            <element signature="e#10359#10360#0" expanded="true" />
-            <element signature="e#10386#10387#0" expanded="true" />
-            <element signature="class#ToolBarItem#0" expanded="false" />
-            <element signature="e#14723#14724#0" expanded="true" />
-            <element signature="e#14965#14966#0" expanded="true" />
-            <element signature="e#14994#14995#0" expanded="true" />
-            <element signature="e#15173#15174#0" expanded="true" />
-            <element signature="e#15232#15233#0" expanded="true" />
-            <element signature="e#15263#15264#0" expanded="true" />
-            <element signature="e#15295#15296#0" expanded="true" />
-            <marker date="1509053833454" expanded="false" signature="9502:9513" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="9526:9532" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="9590:9812" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="9864:10023" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="11018:12023" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="12094:13791" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="13825:13983" ph="{...}" />
-            <marker date="1509053833454" expanded="false" signature="14723:14733" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="14794:14800" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="15040:15141" ph="{}" />
-            <marker date="1509053833454" expanded="false" signature="15330:15341" ph=" { " />
-            <marker date="1509053833454" expanded="false" signature="15360:15366" ph=" }" />
-            <marker date="1509053833454" expanded="false" signature="15414:15866" ph="{...}" />
->>>>>>> ec3d8fd88a917f076ac3eb69881a1c4db520cacd
-          </folding>
+        <state relative-caret-position="561">
+          <caret line="53" column="64" lean-forward="false" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
