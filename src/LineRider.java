@@ -1,11 +1,18 @@
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
+import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
+import javafx.scene.control.Separator;
+import javafx.scene.control.ToolBar;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -30,7 +37,7 @@ enum ItemAction {
 }
 
 public class LineRider extends Application {
-    private final int LINE_LENGTH = 10;
+    private final int LINE_LENGTH = 15;
     private boolean physicsRunning = false;
     private static Canvas canvas;
     private static Group root;
@@ -41,11 +48,33 @@ public class LineRider extends Application {
     //TODO: Add rotation physics
 
     public void start(Stage stage) {
+        Button btnDraw = new Button("Draw");
+        Button btnErase = new Button("Erase");
+        Button btnAdd = new Button("Add Ball");
+        Button btnPan = new Button("Pan");
+        Button btnTrash = new Button("Trash");
+        Button btnPlay = new Button("Play");
+        Button btnReset = new Button("Reset");
+        Button btnZoom = new Button("Zoom");
+        ToolBar tools = new ToolBar();
+        tools.getItems().addAll (
+                btnDraw,
+                btnErase,
+                btnAdd,
+                btnPan,
+                btnTrash,
+                btnZoom,
+                new Separator(),
+                btnPlay,
+                btnReset
+        );
+        tools.setPrefWidth(1154);
         root = new Group();
         Scene scene = new Scene(root, 800, 800);
         canvas = new Canvas(800, 800);
         root.getChildren().addAll(canvas);
-
+        root.getChildren().add(tools);
+        stage.setScene(scene);
         World world = new World(root);
         Course course = new Course(root);
         CourseHandler courseHandler = new CourseHandler(root);
@@ -53,21 +82,59 @@ public class LineRider extends Application {
         //add first ball
         world.addBody(new PhysicsBody(root, new Circle(15, Color.BLUE), .999, .9, 0, -0.15));
 
-        //toolbar
         ArrayList<ToolBarItem> toolbar = new ArrayList<>();
         double spacing = 20;
         final double TOOL_HEIGHT = 30;
-        ToolBarItem pencil = new ToolBarItem(root, canvas, "/assets/pencil.png", 150, 5, TOOL_HEIGHT, ItemAction.SET_PENCIL);
+        ToolBarItem pencil = new ToolBarItem(canvas, "/assets/pencil.png", 150, 5, TOOL_HEIGHT, ItemAction.SET_PENCIL);
+        Image penIm = new Image("/assets/pencil.png");
+        Image erIm = new Image("/assets/eraser.png");
+        Image ballIm = new Image("/assets/ball.png");
+        Image handIm = new Image("/assets/hand.png");
+        scene.setCursor(new ImageCursor(penIm, 150, 700));
         toolbar.add(pencil);
         pencil.setHilighted(true);
-        ToolBarItem eraser = new ToolBarItem(root, canvas, "/assets/eraser.png", pencil.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_ERASER);
+        ToolBarItem eraser = new ToolBarItem(canvas, "/assets/eraser.png", pencil.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_ERASER);
         toolbar.add(eraser);
-        ToolBarItem ballPlacer = new ToolBarItem(root, canvas, "/assets/ball.png", eraser.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_BALLPLACER);
+        ToolBarItem ballPlacer = new ToolBarItem(canvas, "/assets/ball.png", eraser.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_BALLPLACER);
         toolbar.add(ballPlacer);
-        ToolBarItem hand = new ToolBarItem(root, canvas, "/assets/hand.png", ballPlacer.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_HAND);
+        ToolBarItem hand = new ToolBarItem(canvas, "/assets/hand.png", ballPlacer.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.SET_HAND);
         toolbar.add(hand);
-        ToolBarItem trash = new ToolBarItem(root, canvas, "/assets/trash.png", hand.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.TRASH);
+        ToolBarItem trash = new ToolBarItem(canvas, "/assets/trash.png", hand.getEndX() + spacing, 5, TOOL_HEIGHT, ItemAction.TRASH);
         toolbar.add(trash);
+
+        btnPlay.setOnAction(e -> {
+            physicsRunning = !physicsRunning;
+            if (physicsRunning) {
+                btnPlay.setText("Pause");
+            }  else {
+                btnPlay.setText("Play");
+            }
+        });
+
+        btnTrash.setOnAction(e -> {
+            course.clear();
+            world.resetBodies();
+        });
+
+        btnReset.setOnAction(e -> world.resetBodies());
+
+        btnDraw.setOnAction(e -> {
+            penType = PenType.PENCIL;
+            scene.setCursor(new ImageCursor(penIm, 150, 700));
+        });
+
+        btnErase.setOnAction(e -> {
+            penType = PenType.ERASER;
+            scene.setCursor(new ImageCursor(erIm, 150, 700));
+        });
+        btnPan.setOnAction(e -> {
+            penType = PenType.HAND;
+            scene.setCursor(new ImageCursor(handIm, 10, 10));
+        });
+        btnAdd.setOnAction(e -> {
+            penType = PenType.BALLPLACER;
+            scene.setCursor(new ImageCursor(ballIm, 10, 10));
+        });
 
 
         //Drawing collisionBodies

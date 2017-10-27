@@ -1,6 +1,5 @@
 import javafx.geometry.BoundingBox;
 import javafx.geometry.Bounds;
-import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 
@@ -13,9 +12,8 @@ class ToolBarItem {
     Canvas canvas;
     boolean isHilighted = false;
     ItemAction action;
-    Group root;
 
-    public ToolBarItem(Group newRoot, Canvas newCanvas, String url, double posX, double posY, double setHeight, ItemAction itemAction) {
+    public ToolBarItem(Canvas newCanvas, String url, double posX, double posY, double setHeight, ItemAction itemAction) {
         image = new Image(url);
         x = posX;
         y = posY;
@@ -23,9 +21,8 @@ class ToolBarItem {
         width = image.getWidth() * (height / image.getHeight());
         canvas = newCanvas;
         action = itemAction;
-        root = newRoot;
 
-        canvas.getGraphicsContext2D().drawImage(image, x, y, width, height);
+        //canvas.getGraphicsContext2D().drawImage(image, x, y, width, height);
     }
 
     public void hide() {
@@ -47,7 +44,7 @@ class ToolBarItem {
     }
 
     public Bounds getBounds() {
-        return new BoundingBox(x + root.getLayoutX(), y + root.getLayoutY(), width, height);
+        return new BoundingBox(x, y, width, height);
     }
 
     public double getEndX() {
@@ -62,11 +59,11 @@ class ToolBarItem {
         isHilighted = visible;
         if (visible) {
             int topMargin = 10;
-            canvas.getGraphicsContext2D().strokeLine(x, y + height + topMargin, x + width, y + height + topMargin);
+            //canvas.getGraphicsContext2D().strokeLine(x, y + height + topMargin, x + width, y + height + topMargin);
         } else {
             int topMargin = 10;
             int padding = 3;
-            canvas.getGraphicsContext2D().clearRect(x - padding, y + height + topMargin - padding, x + width + padding, y + height + topMargin + padding);
+            //canvas.getGraphicsContext2D().clearRect(x - padding, y + height + topMargin - padding, x + width + padding, y + height + topMargin + padding);
         }
     }
 }
