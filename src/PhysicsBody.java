@@ -91,6 +91,14 @@ public class PhysicsBody extends Body {
         }
     }
 
+    public double getVelX(){
+        return velX;
+    }
+
+    public double getVelY(){
+        return velY;
+    }
+
     public void updatePhysics() {
         ball.setLayoutX(ball.getLayoutX() + velX);
         ball.setLayoutY(ball.getLayoutY() - velY);

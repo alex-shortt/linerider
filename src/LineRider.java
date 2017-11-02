@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -21,6 +22,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+
 
 enum PenType {
     PENCIL, ERASER, BALLPLACER, HAND
@@ -35,26 +37,29 @@ public class LineRider extends Application {
     private static PenType penType = PenType.PENCIL;
     private static ToolBar tools = new ToolBar();
 
+    //TODO: Add background image
+    //TODO: Allow shortcuts (get rid of toolbar focus)
     //TODO: Add Face Texture
     //TODO: Add rotation physics
 
     public void start(Stage stage) {
+        //set up root variables
         root = new Group();
         canvas = new Canvas(800, 800);
         tools.setPrefWidth(5000);
+        tools.setFocusTraversable(false);
 
+        //set up all necessary variables
         Scene scene = new Scene(root, 800, 800);
         World world = new World(root);
         Course course = new Course(root);
         CourseHandler courseHandler = new CourseHandler(root);
         Camera camera = new Camera(root, tools);
 
+        //initialize world
         root.getChildren().addAll(canvas);
         root.getChildren().add(tools);
         stage.setScene(scene);
-
-
-        //add first ball
         world.addBody(new PhysicsBody(root, new Circle(15, Color.BLUE), .999, .9, 0, -0.15));
         scene.setCursor(new ImageCursor(new Image("/assets/pencil.png"), 150, 700));
 
@@ -147,7 +152,7 @@ public class LineRider extends Application {
             }
         });
 
-        //Drawing collisionBodies
+        //mouse events
         double[] mouseStartCoords = new double[2];
         stage.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
             mouseStartCoords[0] = event.getX();
@@ -176,6 +181,21 @@ public class LineRider extends Application {
                 world.addBody(newbody);
             } else if (penType == PenType.ERASER) {
                 course.erase(event.getX(), event.getY());
+            }
+        });
+
+        //keyboard events
+        stage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
+            switch (e.getCode()){
+                case SPACE:
+                    physicsRunning = !physicsRunning;
+                    if (physicsRunning) {
+                        btnPlay.setText("Pause");
+                    } else {
+                        btnPlay.setText("Play");
+                    }
+                    e.consume();
+                    break;
             }
         });
 

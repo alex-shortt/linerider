@@ -39,8 +39,10 @@ public class Camera {
     }
 
     public void followBall(World world){
-        Shape ball = world.getBodies().get(0).getShape();
+        PhysicsBody ball = world.getBodies().get(0);
+        Shape ballShape = ball.getShape();
+        double velScale = 1.1;
 
-        setPan(-ball.getLayoutX() + (root.getScene().getWidth() / 2), -ball.getLayoutY() + (root.getScene().getHeight() / 2));
+        setPan(-ballShape.getLayoutX() + (root.getScene().getWidth() / 2) - (ball.getVelX() * velScale), -ballShape.getLayoutY() + (root.getScene().getHeight() / 2) - (ball.getVelY() * velScale));
     }
 }
