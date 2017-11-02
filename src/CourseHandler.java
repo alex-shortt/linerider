@@ -5,6 +5,9 @@ import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Class to handle saving/loading courses
+ */
 public class CourseHandler {
     Group root;
 
@@ -12,6 +15,11 @@ public class CourseHandler {
         root = newRoot;
     }
 
+    /**
+     * Save the current set of lines as a course
+     * @param lines
+     * @throws IOException
+     */
     public void saveCourse(ArrayList<CollisionBody> lines) throws IOException {
         String name = JOptionPane.showInputDialog("Name Your World");
         if (name == null || (name != null && ("".equals(name)))) {
@@ -27,6 +35,11 @@ public class CourseHandler {
         writer.close();
     }
 
+    /**
+     * Load course from a selected text file
+     * @return List of Lines from course
+     * @throws FileNotFoundException
+     */
     public ArrayList<CollisionBody> loadCourse() throws FileNotFoundException {
         File folder = new File("courses/");
         File[] listOfFiles = folder.listFiles();

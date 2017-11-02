@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -56,7 +55,7 @@ public class LineRider extends Application {
         CourseHandler courseHandler = new CourseHandler(root);
         Camera camera = new Camera(root, tools);
 
-        //initialize world
+        //initialize world and cursor
         root.getChildren().addAll(canvas);
         root.getChildren().add(tools);
         stage.setScene(scene);
@@ -181,21 +180,6 @@ public class LineRider extends Application {
                 world.addBody(newbody);
             } else if (penType == PenType.ERASER) {
                 course.erase(event.getX(), event.getY());
-            }
-        });
-
-        //keyboard events
-        stage.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
-            switch (e.getCode()){
-                case SPACE:
-                    physicsRunning = !physicsRunning;
-                    if (physicsRunning) {
-                        btnPlay.setText("Pause");
-                    } else {
-                        btnPlay.setText("Play");
-                    }
-                    e.consume();
-                    break;
             }
         });
 

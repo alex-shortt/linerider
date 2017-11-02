@@ -3,9 +3,11 @@ import javafx.scene.Group;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
-
 import java.util.ArrayList;
 
+/**
+ * Type of body representing a ball in the game
+ */
 public class PhysicsBody extends Body {
     double velX = 0;
     double velY = 0;
@@ -27,6 +29,10 @@ public class PhysicsBody extends Body {
         accelY = accelerationY;
     }
 
+    /**
+     * Checks collisions withing bounding box, not used
+     * @param bounds bounding box to check collisions of ball with
+     */
     public void checkWorldCollisions(Bounds bounds) {
         final boolean atRightBorder = getShape().getLayoutX() >= (bounds.getMaxX() - RADIUS);
         final boolean atLeftBorder = getShape().getLayoutX() <= RADIUS;
@@ -56,6 +62,10 @@ public class PhysicsBody extends Body {
         }
     }
 
+    /**
+     * Check collision with lines
+     * @param bodies all bodies to check ball collision with
+     */
     public void checkBodyCollisions(ArrayList<CollisionBody> bodies) {
         for (CollisionBody body : bodies) {
             if (this.collidesWith(body)) {
@@ -91,14 +101,25 @@ public class PhysicsBody extends Body {
         }
     }
 
+    /**
+     * Get X Velocity
+     * @return x velocity
+     */
     public double getVelX(){
         return velX;
     }
 
+    /**
+     * Get Y Velocity
+     * @return x velocity
+     */
     public double getVelY(){
         return velY;
     }
 
+    /**
+     * Update velocity and acceleration
+     */
     public void updatePhysics() {
         ball.setLayoutX(ball.getLayoutX() + velX);
         ball.setLayoutY(ball.getLayoutY() - velY);
@@ -107,6 +128,11 @@ public class PhysicsBody extends Body {
         velX += accelX;
     }
 
+    /**
+     * Move ball to x and y coords and stop it there
+     * @param x x coord
+     * @param y y coord
+     */
     public void reset(int x, int y) {
         ball.relocate(x, y);
         velX = 0;

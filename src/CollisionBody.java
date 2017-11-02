@@ -1,9 +1,10 @@
-import javafx.geometry.BoundingBox;
-import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 
+/**
+ * Type of body representing a line in the game
+ */
 public class CollisionBody extends Body {
     Line line;
 
@@ -12,10 +13,10 @@ public class CollisionBody extends Body {
         line = (Line) shape;
     }
 
-    public Bounds getBounds() {
-        return new BoundingBox(line.getStartX(), line.getStartY(), line.getEndX(), line.getEndY());
-    }
-
+    /**
+     * Get the Line object
+     * @return Line object
+     */
     public Line getLine() {
         return line;
     }
